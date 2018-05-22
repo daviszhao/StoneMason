@@ -1,0 +1,11 @@
+rootProject.name = 'Stone_Mason_Framework'
+
+include 'infrastructure:register-server'
+include 'infrastructure:config-server'
+//include 'infrastructure:turbine'
+
+include 'services:user-service'
+include 'services:product-service'
+include 'services:order-service'
+include 'apis:xinnet-api'
+include 'services:xinnet-api-impl'

@@ -1,0 +1,7 @@
+
+dependencies {
+    api 'org.springframework.cloud:spring-cloud-config-server'
+    api 'org.springframework.cloud:spring-cloud-starter-eureka'
+//    api 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard'
+
+}

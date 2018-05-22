@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: config-server
+server:
+  port: 8888
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:passwd@127.0.0.1:7777/eureka,http://admin:passwd@127.0.0.:7778/eureka,http://admin:passwd@127.0.0.:7779/eureka
+  instance:
+    prefer-ip-address: true

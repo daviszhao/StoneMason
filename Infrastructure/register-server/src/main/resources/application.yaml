@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: register-server
+server:
+  port: 7777
+security:
+  user:
+    name: admin
+    password: passwd
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://admin:passwd@127.0.0.1:7778/eureka,http://admin:passwd@127.0.0.1:7779/eureka
+    fetch-registry: false
+    register-with-eureka: false
+---
+spring:
+  profiles: peer2
+server:
+  port: 7778
+eureka:
+  client:
+      service-url:
+        defaultZone: http://admin:passwd@127.0.0.1:7777/eureka,http://admin:passwd@127.0.0.1:7779/eureka
+---
+spring:
+  profiles: peer3
+server:
+  port: 7779
+eureka:
+  client:
+      service-url:
+        defaultZone: http://admin:passwd@127.0.0.1:7777/eureka,http://admin:passwd@127.0.0.1:7778/eureka
