@@ -1,0 +1,12 @@
+
+dependencies {
+    implementation 'org.springframework:spring-web'
+    implementation 'org.springframework.cloud:spring-cloud-netflix-core'
+//    compile 'io.springfox:springfox-core:2.8.0'
+//    compile 'io.swagger:swagger-annotations:1.5.14'
+
+    implementation 'io.springfox:springfox-swagger-ui:2.8.0'
+    implementation 'io.springfox:springfox-swagger2:2.8.0'
+
+
+}
