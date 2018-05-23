@@ -3,6 +3,5 @@ subprojects {
         imports {
             mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
         }
-
     }
 }

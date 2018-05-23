@@ -1,0 +1,9 @@
+logging:
+    level:
+        org.springframework.security: DEBUG
+security:
+    ignored: /css/**,/js/**,/favicon.ico,/webjars/**
+    user:
+        password: password
+server:
+    contextPath: /uaa

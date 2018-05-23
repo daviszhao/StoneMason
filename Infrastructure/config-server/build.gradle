@@ -1,7 +1,9 @@
 
 dependencies {
-    api 'org.springframework.cloud:spring-cloud-config-server'
-    api 'org.springframework.cloud:spring-cloud-starter-eureka'
-//    api 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard'
+    implementation 'org.springframework.cloud:spring-cloud-config-server'
+    implementation ('org.springframework.cloud:spring-cloud-starter-eureka'){
+        exclude group:'com.sun.jersey'
+        exclude group:'com.sun.jersey.contribs'
+    }//    api 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard'
 
 }

@@ -6,11 +6,11 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
-
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath 'io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE'
+        classpath 'ro.isdc.wro4j.gradle:wro4j-gradle-plugin:1.8.0.Beta4'
     }
 }
 ext {
@@ -24,7 +24,9 @@ subprojects {
         repositories {
             mavenCentral()
             jcenter()
-
+            maven{
+                url 'http://repo.spring.io/plugins-release/'
+            }
         }
         apply plugin: 'java-library'
 

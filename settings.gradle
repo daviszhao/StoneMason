@@ -2,6 +2,7 @@ rootProject.name = 'Stone_Mason_Framework'
 
 include 'infrastructure:register-server'
 include 'infrastructure:config-server'
+include 'infrastructure:sso-server'
 //include 'infrastructure:turbine'
 include 'core:abstract-service'
 include 'services:user-service'
