@@ -1,0 +1,11 @@
+apply plugin:'org.springframework.boot'
+
+dependencies {
+    implementation   'org.springframework.boot:spring-boot-starter-security'
+    implementation   'org.springframework.boot:spring-boot-starter-web'
+    implementation   'org.springframework.cloud:spring-cloud-starter-oauth2'
+    implementation   'org.springframework.cloud:spring-cloud-cloudfoundry-web'
+    implementation   'org.webjars:angularjs:1.3.2'
+
+    implementation   'org.webjars:bootstrap'
+}

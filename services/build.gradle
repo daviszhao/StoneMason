@@ -1,26 +1,21 @@
-buildscript {
-    repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-    dependencies {
-        classpath "net.ltgt.gradle:gradle-apt-plugin:0.15"
-    }
-}
-
 subprojects {
-    apply plugin: "net.ltgt.apt"
 
+    apply plugin: 'propdeps'
+    apply plugin: 'propdeps-idea'
     apply plugin: 'org.springframework.boot'
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-actuator'
-        implementation ('org.springframework.cloud:spring-cloud-starter-eureka'){
-            exclude group:'com.sun.jersey'
-            exclude group:'com.sun.jersey.contribs'
+        implementation  'org.springframework.boot:spring-boot-devtools'
+        implementation  'org.springframework.boot:spring-boot-starter-actuator'
+        implementation ('org.springframework.cloud:spring-cloud-starter-eureka') {
+            exclude group: 'com.sun.jersey'
+            exclude group: 'com.sun.jersey.contribs'
         }
-        implementation 'org.springframework.cloud:spring-cloud-starter-config'
-        api project(':core:abstract-service')
-        implementation 'org.springframework.boot:spring-boot-configuration-processor'
+        implementation  'org.springframework.cloud:spring-cloud-starter-config'
+        implementation  project(':core:abstract-service')
+
+        optional 'org.springframework.boot:spring-boot-configuration-processor'
+
+        runtime  'io.springfox:springfox-swagger-ui:2.8.0'
+        implementation  'io.springfox:springfox-swagger2:2.8.0'
     }
 }

@@ -1,3 +1,6 @@
+apply plugin: 'propdeps'
+apply plugin: 'propdeps-idea'
+
 dependencyManagement {
     imports {
         mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
@@ -5,11 +8,12 @@ dependencyManagement {
 
 }
 dependencies {
-    implementation 'org.springframework.boot:spring-boot'
-    implementation 'org.springframework:spring-web'
-    implementation 'javax.inject:javax.inject:1'
-    implementation 'com.fasterxml.jackson.core:jackson-databind'
-    implementation 'commons-codec:commons-codec'
-    implementation 'org.slf4j:slf4j-api'
-    compileOnly 'org.springframework.boot:spring-boot-configuration-processor'
+    implementation   'org.springframework.boot:spring-boot'
+    implementation   'org.springframework:spring-web'
+    implementation   'javax.inject:javax.inject:1'
+    implementation   'com.fasterxml.jackson.core:jackson-databind'
+    implementation   'commons-codec:commons-codec'
+    implementation   'org.slf4j:slf4j-api'
+    optional "org.springframework.boot:spring-boot-configuration-processor"
 }
+compileJava.dependsOn(processResources)
