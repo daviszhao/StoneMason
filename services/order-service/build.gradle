@@ -1,4 +1,5 @@
 dependencies {
-    implementation project(':utils:xinnet-api')
-    api project(':apis:order-api')
+    implementation   project(':utils:xinnet-api')
+    implementation   project(':apis:user-api')
+    implementation  project(':apis:order-api')
 }

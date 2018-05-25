@@ -1,9 +1,13 @@
 logging:
-    level:
-        org.springframework.security: DEBUG
+  level:
+    org.springframework.security: DEBUG
 security:
     ignored: /css/**,/js/**,/favicon.ico,/webjars/**
     user:
-        password: password
+      name: user
+      password: password
 server:
     contextPath: /uaa
+spring:
+  thymeleaf:
+    mode: LEGACYHTML5

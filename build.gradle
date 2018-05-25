@@ -6,11 +6,14 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
+        maven { url 'http://repo.spring.io/plugins-release' }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath 'io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE'
         classpath 'ro.isdc.wro4j.gradle:wro4j-gradle-plugin:1.8.0.Beta4'
+        classpath 'io.spring.gradle:propdeps-plugin:0.0.9.RELEASE'
+
     }
 }
 ext {
@@ -24,7 +27,7 @@ subprojects {
         repositories {
             mavenCentral()
             jcenter()
-            maven{
+            maven {
                 url 'http://repo.spring.io/plugins-release/'
             }
         }
@@ -37,15 +40,22 @@ subprojects {
         version = '1.0'
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
+        configurations {
+            all*.exclude group: 'commons-logging'
+            all*.exclude group: 'velocity'
+            all*.exclude module: 'slf4j-log4j12'
+            all*.exclude module: 'slf4j-jcl'
+            all*.exclude module: 'log4j'
 
+        }
         dependencyManagement {
             imports {
                 mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
             }
-dependencies{
-    dependency 'org.projectlombok:lombok:1.16.20'
-    dependency 'org.slf4j:slf4j-api:1.7.25'
-}
+            dependencies {
+                dependency 'org.projectlombok:lombok:1.16.20'
+                dependency 'org.slf4j:slf4j-api:1.7.25'
+            }
         }
 
         dependencies {
