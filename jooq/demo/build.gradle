@@ -1,0 +1,115 @@
+import org.jooq.util.GenerationTool
+import org.jooq.util.jaxb.*
+
+buildscript {
+
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+
+        maven { url 'http://repo.spring.io/plugins-release' }
+        maven { url 'https://plugins.gradle.org/m2' }
+    }
+
+    dependencies {
+        classpath 'org.jooq:jooq-codegen:3.9.6'
+        classpath 'mysql:mysql-connector-java:5.1.45'
+    }
+}
+
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+    }
+}
+dependencies {
+    compileOnly 'org.jooq:jooq'
+    compileOnly 'org.jooq:jooq-codegen:3.9.6'
+}
+//task jooq {
+compileJava.doFirst {
+    def DBNAME = 'user'
+
+/*
+    def writer = new StringWriter()
+    def xml = new groovy.xml.MarkupBuilder(writer)
+            .configuration('xmlns': 'http://www.jooq.org/xsd/jooq-codegen-3.9.2.xsd') {
+        jdbc() {
+            driver('com.mysql.jdbc.Driver')
+            url("jdbc:mysql://localhost:3306/${DBNAME}?useSSL=false")
+            user('root')
+            password('smart7961')
+            schema("${DBNAME}")
+
+        }
+        generator() {
+            name   'org.jooq.util.DefaultGenerator'
+            database() {
+                name   'org.jooq.util.mysql.MySQLDatabase'
+                inputSchema   "${DBNAME}"
+            }
+
+            // Watch out for this caveat when using MarkupBuilder with "reserved names"
+            // - https://github.com/jOOQ/jOOQ/issues/4797
+            // - http://stackoverflow.com/a/11389034/521799
+            // - https://groups.google.com/forum/#!topic/jooq-user/wi4S9rRxk4A
+            generate([:]) {
+                pojos true
+                daos true
+                javaTimeTypes true
+
+            }
+            strategy(){
+                matchers(){
+                    tables(){
+                        table(){
+                            tableIdentifier(){
+                                transform 'UPPER'
+                                expression 'T_$0'
+                            }
+                            tableClass(){
+                                transform 'CAMEL'
+                                expression 'T_$0'
+                            }
+                        }
+                    }
+                }
+            }
+            target() {
+                packageName('io.github.daviszhao.stonemason.db.user')
+                directory('src/main/java')
+            }
+        }
+    }*/
+    def jdbc = new Jdbc()
+            .withDriver('com.mysql.jdbc.Driver')
+            .withUrl("jdbc:mysql://localhost:3306/${DBNAME}?useSSL=false")
+            .withUser('root')
+            .withPassword('smart7961')
+            .withSchema(DBNAME)
+    def generator = new Generator()
+            .withGenerate(new Generate().withDaos(true).withPojos(true).withJavaTimeTypes(true)
+//            .withGlobalSchemaReferences(false)
+//            .withGlobalTableReferences(false)
+            .withValidationAnnotations(true)
+            .withGlobalObjectReferences(false)
+
+            .withEmptyCatalogs(true).withEmptySchemas(true)
+            .withPojosEqualsAndHashCode(true).withSpringAnnotations(true).withRoutines(false)
+    )
+            .withDatabase(new Database().withInputSchema(DBNAME).withName('org.jooq.util.mysql.MySQLDatabase').withRecordVersionFields('VERSION'))
+            .withTarget(new Target().withDirectory('generated/main/java').withPackageName('io.github.daviszhao.stonemason.db.user').withEncoding('UTF-8'))
+            .withStrategy(new Strategy()
+            .withMatchers(new Matchers().withTables([new MatchersTableType().withExpression('^t_(.*)')
+
+                                                             .withPojoClass(new MatcherRule().withExpression('$1').withTransform(MatcherTransformType.PASCAL))
+                                                             .withDaoClass(new MatcherRule().withExpression('$1_Dao').withTransform(MatcherTransformType.PASCAL))
+                                                             .withRecordClass(new MatcherRule().withExpression('$1_Record').withTransform(MatcherTransformType.PASCAL))
+                                                             .withTableClass(new MatcherRule().withExpression('$1_Table').withTransform(MatcherTransformType.PASCAL))
+                                                             .withTableIdentifier(new MatcherRule().withExpression('table').withTransform(MatcherTransformType.CAMEL))])
+    ))
+    GenerationTool.generate new Configuration()
+            .withLogging(Logging.INFO)
+            .withJdbc(jdbc)
+            .withGenerator(generator)
+}

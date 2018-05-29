@@ -15,3 +15,5 @@ include 'apis:order-api'
 include 'utils:xinnet-api'
 include 'utils:jdjr-api'
 //include 'utils:base-web-layer'
+
+include 'jooq:demo'

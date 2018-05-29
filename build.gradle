@@ -4,14 +4,15 @@ buildscript {
         springVersion = '4.3.14.RELEASE'
     }
     repositories {
-        mavenCentral()
-        jcenter()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+
         maven { url 'http://repo.spring.io/plugins-release' }
+        maven { url 'https://plugins.gradle.org/m2' }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath 'io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE'
-        classpath 'ro.isdc.wro4j.gradle:wro4j-gradle-plugin:1.8.0.Beta4'
+//        classpath 'ro.isdc.wro4j.gradle:wro4j-gradle-plugin:1.8.0.Beta4'
         classpath 'io.spring.gradle:propdeps-plugin:0.0.9.RELEASE'
 
     }
@@ -32,7 +33,7 @@ subprojects {
             }
         }
         apply plugin: 'java-library'
-
+        apply plugin: 'idea'
         apply plugin: 'io.spring.dependency-management'
 
 

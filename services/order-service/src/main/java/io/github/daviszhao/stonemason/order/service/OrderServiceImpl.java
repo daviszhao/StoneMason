@@ -1,6 +1,6 @@
 package io.github.daviszhao.stonemason.order.service;
 
-import io.github.daviszhao.stonemason.user.api.UserService;
+import io.github.daviszhao.stonemason.api.user.UserService;
 
 import javax.inject.Inject;
 import javax.inject.Named;
