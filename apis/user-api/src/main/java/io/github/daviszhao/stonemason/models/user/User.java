@@ -9,6 +9,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
+
+import static org.apache.commons.codec.digest.DigestUtils.md5Hex;
 
 
 /**
@@ -63,6 +66,21 @@ public class User implements Serializable {
         this.locked = locked;
         this.createtime = createtime;
         this.version = version;
+    }
+
+    public User(String userName, String password) {
+        this.setUsername(userName);
+        String salt = UUID.randomUUID().toString();
+        this.setSalt(salt);
+        this.setPassword(encryptPassword(password, salt));
+        this.setCreatetime(LocalDateTime.now());
+        this.version = 1;
+        this.locked = false;
+
+    }
+
+    public static String encryptPassword(String password, String salt) {
+        return md5Hex(md5Hex(password + salt) + salt);
     }
 
     @NotNull

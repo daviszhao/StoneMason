@@ -4,17 +4,21 @@
 package io.github.daviszhao.stonemason.db.user.tables.daos;
 
 
-import io.github.daviszhao.stonemason.db.user.tables.UserTable;
+import io.github.daviszhao.stonemason.db.daos.base.AbstractDao;
 import io.github.daviszhao.stonemason.db.user.tables.records.UserRecord;
 import io.github.daviszhao.stonemason.models.user.User;
+import org.jooq.Condition;
 import org.jooq.Configuration;
-import org.jooq.impl.DAOImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Generated;
+import javax.inject.Inject;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+
+import static io.github.daviszhao.stonemason.db.user.tables.UserTable.table;
+import static org.springframework.util.StringUtils.hasText;
 
 
 /**
@@ -29,21 +33,22 @@ import java.util.List;
 )
 @SuppressWarnings({"all", "unchecked", "rawtypes"})
 @Repository
-public class UserDao extends DAOImpl<UserRecord, User, Integer> {
+public class UserDao extends AbstractDao<UserRecord, User, Integer> {
 
     /**
      * Create a new UserDao without any configuration
      */
     public UserDao() {
-        super(UserTable.table, User.class);
+        super(table, User.class);
     }
+
 
     /**
      * Create a new UserDao with an attached configuration
      */
-    @Autowired
+    @Inject
     public UserDao(Configuration configuration) {
-        super(UserTable.table, User.class, configuration);
+        super(table, User.class, configuration);
     }
 
     /**
@@ -58,69 +63,80 @@ public class UserDao extends DAOImpl<UserRecord, User, Integer> {
      * Fetch records that have <code>ID IN (values)</code>
      */
     public List<User> fetchById(Integer... values) {
-        return fetch(UserTable.table.ID, values);
+        return fetch(table.ID, values);
     }
 
     /**
      * Fetch a unique record that has <code>ID = value</code>
      */
     public User fetchOneById(Integer value) {
-        return fetchOne(UserTable.table.ID, value);
+        return fetchOne(table.ID, value);
     }
 
     /**
      * Fetch records that have <code>USERNAME IN (values)</code>
      */
     public List<User> fetchByUsername(String... values) {
-        return fetch(UserTable.table.USERNAME, values);
+        return fetch(table.USERNAME, values);
     }
 
     /**
      * Fetch a unique record that has <code>USERNAME = value</code>
      */
     public User fetchOneByUsername(String value) {
-        return fetchOne(UserTable.table.USERNAME, value);
+        return fetchOne(table.USERNAME, value);
     }
 
     /**
      * Fetch records that have <code>PASSWORD IN (values)</code>
      */
     public List<User> fetchByPassword(String... values) {
-        return fetch(UserTable.table.PASSWORD, values);
+        return fetch(table.PASSWORD, values);
     }
 
     /**
      * Fetch records that have <code>SALT IN (values)</code>
      */
     public List<User> fetchBySalt(String... values) {
-        return fetch(UserTable.table.SALT, values);
+        return fetch(table.SALT, values);
     }
 
     /**
      * Fetch a unique record that has <code>SALT = value</code>
      */
     public User fetchOneBySalt(String value) {
-        return fetchOne(UserTable.table.SALT, value);
+        return fetchOne(table.SALT, value);
     }
 
     /**
      * Fetch records that have <code>LOCKED IN (values)</code>
      */
     public List<User> fetchByLocked(Boolean... values) {
-        return fetch(UserTable.table.LOCKED, values);
+        return fetch(table.LOCKED, values);
     }
 
     /**
      * Fetch records that have <code>CREATETIME IN (values)</code>
      */
     public List<User> fetchByCreatetime(LocalDateTime... values) {
-        return fetch(UserTable.table.CREATETIME, values);
+        return fetch(table.CREATETIME, values);
     }
 
     /**
      * Fetch records that have <code>VERSION IN (values)</code>
      */
     public List<User> fetchByVersion(Integer... values) {
-        return fetch(UserTable.table.VERSION, values);
+        return fetch(table.VERSION, values);
     }
+
+    public List<Condition> buildUserCondition(String keyword, Boolean locked) {
+        List<Condition> conditionList = new ArrayList<>();
+        if (hasText(keyword)) conditionList.add(table.USERNAME.like("%" + keyword + "%"));
+        if (locked != null) if (locked) conditionList.add(table.LOCKED.isTrue());
+        else conditionList.add(table.LOCKED.isFalse());
+
+        return conditionList;
+    }
+
+
 }

@@ -10,7 +10,4 @@ public class OrderServiceImpl {
     @Inject
     private UserService userService;
 
-    public void hello() {
-        System.out.println(userService.hello("name"));
-    }
 }

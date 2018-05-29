@@ -1,6 +1,26 @@
 spring:
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-    username: root
-    password:
+    datasource:
+        continue-on-error: true
+        driver-class-name: com.mysql.jdbc.Driver
+        sql-script-encoding: UTF-8
+        url: jdbc:mysql://localhost/user?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=true&useSSL=false
+        username: root
+        password: smart7961
+        hikari:
+            max-lifetime: 1765000
+            maximum-pool-size: 20
+    jooq:
+      sql-dialect: mysql
+    cloud:
+      config:
+        discovery:
+          enabled: true
+          service-id: config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:passwd@127.0.0.1:7777/eureka,http://admin:passwd@127.0.0.:7778/eureka,http://admin:passwd@127.0.0.:7779/eureka
+  instance:
+    prefer-ip-address: true
+    hostname: 127.0.0.1
+

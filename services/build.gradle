@@ -4,19 +4,21 @@ subprojects {
     apply plugin: 'propdeps-idea'
     apply plugin: 'org.springframework.boot'
     dependencies {
-        implementation  'org.springframework.boot:spring-boot-devtools'
-        implementation ('org.springframework.cloud:spring-cloud-starter-eureka') {
-            exclude group: 'com.sun.jersey'
-            exclude group: 'com.sun.jersey.contribs'
-        }
-        implementation  'org.springframework.cloud:spring-cloud-starter-config'
-        implementation  'org.springframework.boot:spring-boot-starter-jooq'
-        implementation  project(':core:abstract-service')
+        implementation 'org.springframework.boot:spring-boot-devtools'
+
+        implementation 'org.springframework.cloud:spring-cloud-starter-eureka'
+        implementation 'org.springframework.cloud:spring-cloud-starter-config'
+        implementation 'org.springframework.cloud:spring-cloud-starter-feign'
+        implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
+
+        implementation 'org.springframework.boot:spring-boot-starter-jooq'
+
+        implementation project(':core:abstract-service')
         runtime 'com.zaxxer:HikariCP'
         runtime 'mysql:mysql-connector-java'
         optional 'org.springframework.boot:spring-boot-configuration-processor'
-        implementation 'org.jooq:jooq'
-        runtime  'io.springfox:springfox-swagger-ui:2.8.0'
-        implementation  'io.springfox:springfox-swagger2:2.8.0'
+        runtime 'io.springfox:springfox-swagger-ui:2.8.0'
+        implementation 'io.springfox:springfox-swagger2:2.8.0'
+        runtime 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
     }
 }

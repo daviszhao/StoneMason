@@ -1,7 +1,4 @@
 dependencies {
-    implementation  ('org.springframework.cloud:spring-cloud-starter-eureka-server') {
-        exclude group: 'com.sun.jersey', module: 'jersey-client'
-        exclude group: 'com.sun.jersey.contribs'
-    }
-    implementation   'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.cloud:spring-cloud-starter-eureka-server'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 }

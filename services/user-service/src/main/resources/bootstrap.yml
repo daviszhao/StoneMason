@@ -1,0 +1,13 @@
+spring:
+     application:
+      name: user-service
+     devtools:
+       livereload:
+         port: 4321
+server:
+  port: 3456
+logging:
+  level:
+    root: error
+    io.github.daviszhao: debug
+    org.jooq: debug

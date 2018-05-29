@@ -1,3 +1,4 @@
 dependencies {
-    implementation   project(':apis:base-api')
+    api project(':apis:base-api')
+//    implementation 'commons-codec:commons-codec'
 }
