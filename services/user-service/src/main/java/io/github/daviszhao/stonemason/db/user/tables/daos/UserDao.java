@@ -4,7 +4,7 @@
 package io.github.daviszhao.stonemason.db.user.tables.daos;
 
 
-import io.github.daviszhao.stonemason.db.daos.base.AbstractDao;
+import io.github.daviszhao.stonemason.db.base.daos.AbstractDao;
 import io.github.daviszhao.stonemason.db.user.tables.records.UserRecord;
 import io.github.daviszhao.stonemason.models.user.User;
 import org.jooq.Condition;

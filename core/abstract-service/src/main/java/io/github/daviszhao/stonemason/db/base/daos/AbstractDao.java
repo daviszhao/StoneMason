@@ -1,4 +1,4 @@
-package io.github.daviszhao.stonemason.db.daos.base;
+package io.github.daviszhao.stonemason.db.base.daos;
 
 import io.github.daviszhao.stonemason.api.base.PageData;
 import org.jooq.*;
