@@ -11,16 +11,4 @@ spring:
             maximum-pool-size: 20
     jooq:
       sql-dialect: mysql
-    cloud:
-      config:
-        discovery:
-          enabled: true
-          service-id: config-server
-eureka:
-  client:
-    service-url:
-      defaultZone: http://admin:passwd@127.0.0.1:7777/eureka #,http://admin:passwd@127.0.0.:7778/eureka,http://admin:passwd@127.0.0.:7779/eureka
-  instance:
-    prefer-ip-address: true
-    hostname: 127.0.0.1
 

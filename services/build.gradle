@@ -4,7 +4,7 @@ subprojects {
     apply plugin: 'propdeps-idea'
     apply plugin: 'org.springframework.boot'
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-devtools'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
         implementation 'org.springframework.cloud:spring-cloud-starter-eureka'
         implementation 'org.springframework.cloud:spring-cloud-starter-config'

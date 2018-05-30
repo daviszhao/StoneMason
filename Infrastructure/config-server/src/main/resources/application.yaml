@@ -1,11 +1,19 @@
 spring:
   application:
     name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/daviszhao/StoneMason.git
+          search-paths: /configfiles
+          username: daviszhao
+          password: daisy820121
 server:
   port: 8888
 eureka:
   client:
     service-url:
-      defaultZone: http://admin:passwd@127.0.0.1:7777/eureka,http://admin:passwd@127.0.0.:7778/eureka,http://admin:passwd@127.0.0.:7779/eureka
+      defaultZone: http://admin:passwd@127.0.0.1:7777/eureka #,http://admin:passwd@127.0.0.:7778/eureka,http://admin:passwd@127.0.0.:7779/eureka
   instance:
     prefer-ip-address: true
