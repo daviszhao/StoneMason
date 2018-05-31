@@ -12,6 +12,7 @@ subprojects {
         implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
 
         implementation 'org.springframework.boot:spring-boot-starter-jooq'
+        implementation 'org.springframework.boot:spring-boot-starter-validation'
 
         implementation project(':core:abstract-service')
         runtime 'com.zaxxer:HikariCP'

@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> queryAllUsers(String keyword, Boolean locked) {
         List<Condition> conditions = userDao.buildUserCondition(keyword, locked);
-        SortField<LocalDateTime> sortField = UserTable.table.CREATETIME.desc();
+        SortField<LocalDateTime> sortField = UserTable.USER.CREATETIME.desc();
         return userDao.queryAllData(conditions, sortField);
     }
 
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
         assert pageSize > 0;
         assert page > 0;
         List<Condition> conditions = userDao.buildUserCondition(keyword, locked);
-        return userDao.queryPageData(conditions, UserTable.table.CREATETIME.desc(), pageSize, page);
+        return userDao.queryPageData(conditions, UserTable.USER.CREATETIME.desc(), pageSize, page);
     }
 
 
