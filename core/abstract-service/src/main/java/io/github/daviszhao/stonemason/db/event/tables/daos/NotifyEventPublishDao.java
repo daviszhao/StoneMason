@@ -2,6 +2,7 @@
 package io.github.daviszhao.stonemason.db.event.tables.daos;
 
 
+import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
 import io.github.daviszhao.stonemason.db.base.daos.AbstractDao;
 import io.github.daviszhao.stonemason.db.event.tables.NotifyEventPublishTable;
 import io.github.daviszhao.stonemason.db.event.tables.records.NotifyEventPublishRecord;
@@ -72,7 +73,8 @@ public class NotifyEventPublishDao extends AbstractDao<NotifyEventPublishRecord,
     /**
      * Fetch records that have <code>status IN (values)</code>
      */
-    public List<NotifyEventPublish> fetchByStatus(String... values) {
+    public List<NotifyEventPublish> fetchByStatus(ProcessStatus... values) {
+
         return fetch(NotifyEventPublishTable.notifyEventPublish.STATUS, values);
     }
 

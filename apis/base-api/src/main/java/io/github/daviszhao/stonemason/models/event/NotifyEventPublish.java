@@ -19,7 +19,7 @@ import javax.annotation.Generated;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
 public class NotifyEventPublish extends AbstractEventPublish {

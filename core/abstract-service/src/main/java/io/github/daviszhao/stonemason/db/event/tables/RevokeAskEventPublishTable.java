@@ -4,9 +4,13 @@
 package io.github.daviszhao.stonemason.db.event.tables;
 
 
+import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
 import io.github.daviszhao.stonemason.db.event.Keys;
 import io.github.daviszhao.stonemason.db.event.tables.records.RevokeAskEventPublishRecord;
 import org.jooq.*;
+import org.jooq.impl.DSL;
+import org.jooq.impl.EnumConverter;
+import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
 
 import javax.annotation.Generated;
@@ -40,7 +44,7 @@ public class RevokeAskEventPublishTable extends TableImpl<RevokeAskEventPublishR
     /**
      * The column <code>user.t_revoke_ask_event_publish.status</code>. 'NEW','PROCESSED','IGNORE'
      */
-    public final TableField<RevokeAskEventPublishRecord, String> STATUS = createField("status", org.jooq.impl.SQLDataType.VARCHAR.length(20).nullable(false).defaultValue(org.jooq.impl.DSL.inline("NEW", org.jooq.impl.SQLDataType.VARCHAR)), this, "'NEW','PROCESSED','IGNORE'");
+    public final TableField<RevokeAskEventPublishRecord, ProcessStatus> STATUS = createField("status", SQLDataType.VARCHAR.length(20).nullable(false).defaultValue(DSL.inline("NEW", SQLDataType.VARCHAR)), this, "'NEW','PROCESSED','IGNORE'", new EnumConverter<>(String.class, ProcessStatus.class));
     /**
      * The column <code>user.t_revoke_ask_event_publish.eventId</code>.
      */

@@ -2,6 +2,7 @@
 package io.github.daviszhao.stonemason.db.event.tables.daos;
 
 
+import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
 import io.github.daviszhao.stonemason.db.base.daos.AbstractDao;
 import io.github.daviszhao.stonemason.db.event.tables.EventWatchTable;
 import io.github.daviszhao.stonemason.db.event.tables.records.EventWatchRecord;
@@ -94,7 +95,7 @@ public class EventWatchDao extends AbstractDao<EventWatchRecord, EventWatch, Int
     /**
      * Fetch records that have <code>askEventStatus IN (values)</code>
      */
-    public List<EventWatch> fetchByAskeventstatus(String... values) {
+    public List<EventWatch> fetchByAskeventstatus(AskEventStatus... values) {
         return fetch(EventWatchTable.eventWatch.ASKEVENTSTATUS, values);
     }
 

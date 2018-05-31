@@ -4,9 +4,12 @@
 package io.github.daviszhao.stonemason.db.event.tables;
 
 
+import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
 import io.github.daviszhao.stonemason.db.event.Keys;
 import io.github.daviszhao.stonemason.db.event.tables.records.EventWatchRecord;
 import org.jooq.*;
+import org.jooq.impl.EnumConverter;
+import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
 
 import javax.annotation.Generated;
@@ -53,7 +56,7 @@ public class EventWatchTable extends TableImpl<EventWatchRecord> {
     /**
      * The column <code>user.t_event_watch.askEventStatus</code>. 'PENDING','TIMEOUT','FAILED','SUCCESS','CANCELLED'
      */
-    public final TableField<EventWatchRecord, String> ASKEVENTSTATUS = createField("askEventStatus", org.jooq.impl.SQLDataType.VARCHAR.length(20), this, "'PENDING','TIMEOUT','FAILED','SUCCESS','CANCELLED'");
+    public final TableField<EventWatchRecord, AskEventStatus> ASKEVENTSTATUS = createField("askEventStatus", SQLDataType.VARCHAR.length(20), this, "'PENDING','TIMEOUT','FAILED','SUCCESS','CANCELLED'", new EnumConverter<>(String.class, AskEventStatus.class));
     /**
      * The column <code>user.t_event_watch.timeoutTime</code>.
      */

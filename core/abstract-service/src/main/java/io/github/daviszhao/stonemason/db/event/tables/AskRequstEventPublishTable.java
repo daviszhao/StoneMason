@@ -4,9 +4,14 @@
 package io.github.daviszhao.stonemason.db.event.tables;
 
 
+import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
+import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
 import io.github.daviszhao.stonemason.db.event.Keys;
 import io.github.daviszhao.stonemason.db.event.tables.records.AskRequstEventPublishRecord;
 import org.jooq.*;
+import org.jooq.impl.DSL;
+import org.jooq.impl.EnumConverter;
+import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
 
 import javax.annotation.Generated;
@@ -40,7 +45,7 @@ public class AskRequstEventPublishTable extends TableImpl<AskRequstEventPublishR
     /**
      * The column <code>user.t_ask_requst_event_publish.status</code>. 'NEW','PROCESSED','IGNORE'
      */
-    public final TableField<AskRequstEventPublishRecord, String> STATUS = createField("status", org.jooq.impl.SQLDataType.VARCHAR.length(20).nullable(false).defaultValue(org.jooq.impl.DSL.inline("NEW", org.jooq.impl.SQLDataType.VARCHAR)), this, "'NEW','PROCESSED','IGNORE'");
+    public final TableField<AskRequstEventPublishRecord, ProcessStatus> STATUS = createField("status", SQLDataType.VARCHAR.length(20).nullable(false).defaultValue(DSL.inline("NEW", SQLDataType.VARCHAR)), this, "'NEW','PROCESSED','IGNORE'", new EnumConverter<>(String.class, ProcessStatus.class));
     /**
      * The column <code>user.t_ask_requst_event_publish.eventId</code>.
      */
@@ -48,7 +53,7 @@ public class AskRequstEventPublishTable extends TableImpl<AskRequstEventPublishR
     /**
      * The column <code>user.t_ask_requst_event_publish.askEventStatus</code>. 'PENDING','TIMEOUT','FAILED','SUCCESS','CANCELLED'
      */
-    public final TableField<AskRequstEventPublishRecord, String> ASKEVENTSTATUS = createField("askEventStatus", org.jooq.impl.SQLDataType.VARCHAR.length(20), this, "'PENDING','TIMEOUT','FAILED','SUCCESS','CANCELLED'");
+    public final TableField<AskRequstEventPublishRecord, AskEventStatus> ASKEVENTSTATUS = createField("askEventStatus", SQLDataType.VARCHAR.length(20), this, "'PENDING','TIMEOUT','FAILED','SUCCESS','CANCELLED'", new EnumConverter<>(String.class, AskEventStatus.class));
     /**
      * The column <code>user.t_ask_requst_event_publish.watchId</code>.
      */
