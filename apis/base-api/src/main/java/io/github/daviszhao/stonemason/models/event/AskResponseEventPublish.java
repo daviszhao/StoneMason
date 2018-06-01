@@ -19,7 +19,6 @@ import javax.annotation.Generated;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
 public class AskResponseEventPublish extends AbstractEventPublish {
@@ -38,6 +37,8 @@ public class AskResponseEventPublish extends AbstractEventPublish {
         this.success = value.success;
         this.askeventid = value.askeventid;
         this.setEventtype(value.getEventtype());
+        this.setCreateTime(value.getCreateTime());
+        this.setUpdateTime(value.getUpdateTime());
         this.setVersion(value.getVersion());
     }
 

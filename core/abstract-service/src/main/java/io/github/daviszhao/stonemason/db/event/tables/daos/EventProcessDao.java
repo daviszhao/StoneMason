@@ -2,6 +2,8 @@
 package io.github.daviszhao.stonemason.db.event.tables.daos;
 
 
+import io.github.daviszhao.stonemason.busEvent.constants.EventCategory;
+import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
 import io.github.daviszhao.stonemason.db.base.daos.AbstractDao;
 import io.github.daviszhao.stonemason.db.event.tables.EventProcessTable;
 import io.github.daviszhao.stonemason.db.event.tables.records.EventProcessRecord;
@@ -29,7 +31,7 @@ public class EventProcessDao extends AbstractDao<EventProcessRecord, EventProces
      * Create a new EventProcessDao without any configuration
      */
     public EventProcessDao() {
-        super(EventProcessTable.eventProcess, EventProcess.class);
+        super(EventProcessTable.EVENT_PROCESS, EventProcess.class);
     }
 
     /**
@@ -37,7 +39,7 @@ public class EventProcessDao extends AbstractDao<EventProcessRecord, EventProces
      */
     @Autowired
     public EventProcessDao(Configuration configuration) {
-        super(EventProcessTable.eventProcess, EventProcess.class, configuration);
+        super(EventProcessTable.EVENT_PROCESS, EventProcess.class, configuration);
     }
 
     /**
@@ -52,62 +54,62 @@ public class EventProcessDao extends AbstractDao<EventProcessRecord, EventProces
      * Fetch records that have <code>id IN (values)</code>
      */
     public List<EventProcess> fetchById(Integer... values) {
-        return fetch(EventProcessTable.eventProcess.ID, values);
+        return fetch(EventProcessTable.EVENT_PROCESS.ID, values);
     }
 
     /**
      * Fetch a unique record that has <code>id = value</code>
      */
     public EventProcess fetchOneById(Integer value) {
-        return fetchOne(EventProcessTable.eventProcess.ID, value);
+        return fetchOne(EventProcessTable.EVENT_PROCESS.ID, value);
     }
 
     /**
      * Fetch records that have <code>payload IN (values)</code>
      */
     public List<EventProcess> fetchByPayload(String... values) {
-        return fetch(EventProcessTable.eventProcess.PAYLOAD, values);
+        return fetch(EventProcessTable.EVENT_PROCESS.PAYLOAD, values);
     }
 
     /**
      * Fetch records that have <code>status IN (values)</code>
      */
-    public List<EventProcess> fetchByStatus(String... values) {
-        return fetch(EventProcessTable.eventProcess.STATUS, values);
+    public List<EventProcess> fetchByStatus(ProcessStatus... values) {
+        return fetch(EventProcessTable.EVENT_PROCESS.STATUS, values);
     }
 
     /**
      * Fetch records that have <code>eventCategory IN (values)</code>
      */
-    public List<EventProcess> fetchByEventcategory(String... values) {
-        return fetch(EventProcessTable.eventProcess.EVENTCATEGORY, values);
+    public List<EventProcess> fetchByEventcategory(EventCategory... values) {
+        return fetch(EventProcessTable.EVENT_PROCESS.EVENTCATEGORY, values);
     }
 
     /**
      * Fetch records that have <code>eventId IN (values)</code>
      */
     public List<EventProcess> fetchByEventid(String... values) {
-        return fetch(EventProcessTable.eventProcess.EVENTID, values);
+        return fetch(EventProcessTable.EVENT_PROCESS.EVENTID, values);
     }
 
     /**
      * Fetch a unique record that has <code>eventId = value</code>
      */
     public EventProcess fetchOneByEventid(String value) {
-        return fetchOne(EventProcessTable.eventProcess.EVENTID, value);
+        return fetchOne(EventProcessTable.EVENT_PROCESS.EVENTID, value);
     }
 
     /**
      * Fetch records that have <code>eventType IN (values)</code>
      */
     public List<EventProcess> fetchByEventtype(String... values) {
-        return fetch(EventProcessTable.eventProcess.EVENTTYPE, values);
+        return fetch(EventProcessTable.EVENT_PROCESS.EVENTTYPE, values);
     }
 
     /**
      * Fetch records that have <code>version IN (values)</code>
      */
     public List<EventProcess> fetchByVersion(Integer... values) {
-        return fetch(EventProcessTable.eventProcess.VERSION, values);
+        return fetch(EventProcessTable.EVENT_PROCESS.VERSION, values);
     }
 }

@@ -1,13 +1,15 @@
-
 package io.github.daviszhao.stonemason.models.event;
 
 
+import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.FailureInfo;
 import io.github.daviszhao.stonemason.models.base.BaseModel;
 import lombok.*;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 
 @Generated(
@@ -21,7 +23,6 @@ import javax.validation.constraints.Size;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
 public class EventWatchProcess extends BaseModel {
@@ -31,11 +32,13 @@ public class EventWatchProcess extends BaseModel {
     @NotNull
     private Integer id;
     @NotNull
-    private Integer watchid;
+    private int watchid;
     @NotNull
     @Size(max = 20)
-    private String status;
-    private String failureinfo;
+    private ProcessStatus status;
+    private FailureInfo failureinfo;
+    private LocalDateTime createTime;
+    private LocalDateTime updateTime;
 
 
     public EventWatchProcess(EventWatchProcess value) {
@@ -43,6 +46,9 @@ public class EventWatchProcess extends BaseModel {
         this.watchid = value.watchid;
         this.status = value.status;
         this.failureinfo = value.failureinfo;
+        this.createTime = value.createTime;
+        this.updateTime = value.updateTime;
         setVersion(value.getVersion());
     }
+
 }

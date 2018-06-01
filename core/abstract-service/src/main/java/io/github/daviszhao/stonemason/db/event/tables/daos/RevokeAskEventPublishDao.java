@@ -3,6 +3,7 @@ package io.github.daviszhao.stonemason.db.event.tables.daos;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
 import io.github.daviszhao.stonemason.db.base.daos.AbstractDao;
 import io.github.daviszhao.stonemason.db.event.tables.RevokeAskEventPublishTable;
 import io.github.daviszhao.stonemason.db.event.tables.records.RevokeAskEventPublishRecord;
@@ -30,7 +31,7 @@ public class RevokeAskEventPublishDao extends AbstractDao<RevokeAskEventPublishR
      * Create a new RevokeAskEventPublishDao without any configuration
      */
     public RevokeAskEventPublishDao() {
-        super(RevokeAskEventPublishTable.revokeAskEventPublish, RevokeAskEventPublish.class);
+        super(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH, RevokeAskEventPublish.class);
     }
 
     /**
@@ -38,7 +39,7 @@ public class RevokeAskEventPublishDao extends AbstractDao<RevokeAskEventPublishR
      */
     @Autowired
     public RevokeAskEventPublishDao(Configuration configuration) {
-        super(RevokeAskEventPublishTable.revokeAskEventPublish, RevokeAskEventPublish.class, configuration);
+        super(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH, RevokeAskEventPublish.class, configuration);
     }
 
     /**
@@ -53,62 +54,62 @@ public class RevokeAskEventPublishDao extends AbstractDao<RevokeAskEventPublishR
      * Fetch records that have <code>id IN (values)</code>
      */
     public List<RevokeAskEventPublish> fetchById(Integer... values) {
-        return fetch(RevokeAskEventPublishTable.revokeAskEventPublish.ID, values);
+        return fetch(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.ID, values);
     }
 
     /**
      * Fetch a unique record that has <code>id = value</code>
      */
     public RevokeAskEventPublish fetchOneById(Integer value) {
-        return fetchOne(RevokeAskEventPublishTable.revokeAskEventPublish.ID, value);
+        return fetchOne(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.ID, value);
     }
 
     /**
      * Fetch records that have <code>payload IN (values)</code>
      */
-    public List<RevokeAskEventPublish> fetchByPayload(String... values) {
-        return fetch(RevokeAskEventPublishTable.revokeAskEventPublish.PAYLOAD, values);
+    public List<RevokeAskEventPublish> fetchByPayload(EventPayload... values) {
+        return fetch(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.PAYLOAD, values);
     }
 
     /**
      * Fetch records that have <code>status IN (values)</code>
      */
     public List<RevokeAskEventPublish> fetchByStatus(ProcessStatus... values) {
-        return fetch(RevokeAskEventPublishTable.revokeAskEventPublish.STATUS, values);
+        return fetch(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.STATUS, values);
     }
 
     /**
      * Fetch records that have <code>eventId IN (values)</code>
      */
     public List<RevokeAskEventPublish> fetchByEventid(String... values) {
-        return fetch(RevokeAskEventPublishTable.revokeAskEventPublish.EVENTID, values);
+        return fetch(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.EVENTID, values);
     }
 
     /**
      * Fetch a unique record that has <code>eventId = value</code>
      */
     public RevokeAskEventPublish fetchOneByEventid(String value) {
-        return fetchOne(RevokeAskEventPublishTable.revokeAskEventPublish.EVENTID, value);
+        return fetchOne(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.EVENTID, value);
     }
 
     /**
      * Fetch records that have <code>askEventId IN (values)</code>
      */
     public List<RevokeAskEventPublish> fetchByAskeventid(String... values) {
-        return fetch(RevokeAskEventPublishTable.revokeAskEventPublish.ASKEVENTID, values);
+        return fetch(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.ASKEVENTID, values);
     }
 
     /**
      * Fetch records that have <code>version IN (values)</code>
      */
     public List<RevokeAskEventPublish> fetchByVersion(Integer... values) {
-        return fetch(RevokeAskEventPublishTable.revokeAskEventPublish.VERSION, values);
+        return fetch(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.VERSION, values);
     }
 
     /**
      * Fetch records that have <code>eventType IN (values)</code>
      */
     public List<RevokeAskEventPublish> fetchByEventtype(String... values) {
-        return fetch(RevokeAskEventPublishTable.revokeAskEventPublish.EVENTTYPE, values);
+        return fetch(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.EVENTTYPE, values);
     }
 }

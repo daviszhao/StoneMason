@@ -1,8 +1,8 @@
-
 package io.github.daviszhao.stonemason.models.event;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
 import io.github.daviszhao.stonemason.models.base.BaseModel;
 import lombok.*;
 
@@ -10,6 +10,10 @@ import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.List;
+
+import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.joining;
 
 
 @Generated(
@@ -23,7 +27,6 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
 public class EventWatch extends BaseModel {
@@ -38,9 +41,9 @@ public class EventWatch extends BaseModel {
     private String askeventids;
     @Size(max = 255)
     private String callbackclass;
-    private Boolean united;
+    private boolean united;
     @Size(max = 20)
-    private String askeventstatus;
+    private AskEventStatus askeventstatus;
     @JsonFormat(pattern = DATETIME_FORMAT)
     private LocalDateTime timeouttime;
 
@@ -56,4 +59,11 @@ public class EventWatch extends BaseModel {
         this.setVersion(value.getVersion());
     }
 
+    public List<String> getAskEventIdList() {
+        return asList(askeventids.split(","));
+    }
+
+    public void setAskEventIdList(final List<String> list) {
+        setAskeventids(list.stream().collect(joining(",")));
+    }
 }

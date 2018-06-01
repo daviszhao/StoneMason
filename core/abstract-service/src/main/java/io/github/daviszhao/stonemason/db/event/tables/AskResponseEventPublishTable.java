@@ -5,6 +5,8 @@ package io.github.daviszhao.stonemason.db.event.tables;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
+import io.github.daviszhao.stonemason.db.base.utils.JsonObjectsConverter;
 import io.github.daviszhao.stonemason.db.event.Keys;
 import io.github.daviszhao.stonemason.db.event.tables.records.AskResponseEventPublishRecord;
 import org.jooq.*;
@@ -14,6 +16,7 @@ import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
 
 import javax.annotation.Generated;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,7 +34,7 @@ public class AskResponseEventPublishTable extends TableImpl<AskResponseEventPubl
     /**
      * The reference instance of <code>user.t_ask_response_event_publish</code>
      */
-    public static final AskResponseEventPublishTable askResponseEventPublish = new AskResponseEventPublishTable();
+    public static final AskResponseEventPublishTable ASK_RESPONSE_EVENT_PUBLISH = new AskResponseEventPublishTable();
     private static final long serialVersionUID = -1345931121;
     /**
      * The column <code>user.t_ask_response_event_publish.id</code>.
@@ -40,7 +43,7 @@ public class AskResponseEventPublishTable extends TableImpl<AskResponseEventPubl
     /**
      * The column <code>user.t_ask_response_event_publish.payload</code>.
      */
-    public final TableField<AskResponseEventPublishRecord, String> PAYLOAD = createField("payload", org.jooq.impl.SQLDataType.CLOB, this, "");
+    public final TableField<AskResponseEventPublishRecord, EventPayload> PAYLOAD = createField("payload", org.jooq.impl.SQLDataType.CLOB, this, "", new JsonObjectsConverter<>(EventPayload.class));
     /**
      * The column <code>user.t_ask_response_event_publish.status</code>. 'NEW','PROCESSED','IGNORE'
      */
@@ -65,6 +68,8 @@ public class AskResponseEventPublishTable extends TableImpl<AskResponseEventPubl
      * The column <code>user.t_ask_response_event_publish.version</code>.
      */
     public final TableField<AskResponseEventPublishRecord, Integer> VERSION = createField("version", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<AskResponseEventPublishRecord, LocalDateTime> CREATETIME = createField("createTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
+    public final TableField<AskResponseEventPublishRecord, LocalDateTime> UPDATETIME = createField("updateTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
 
     /**
      * Create a <code>user.t_ask_response_event_publish</code> table reference
@@ -77,7 +82,7 @@ public class AskResponseEventPublishTable extends TableImpl<AskResponseEventPubl
      * Create an aliased <code>user.t_ask_response_event_publish</code> table reference
      */
     public AskResponseEventPublishTable(String alias) {
-        this(alias, askResponseEventPublish);
+        this(alias, ASK_RESPONSE_EVENT_PUBLISH);
     }
 
     private AskResponseEventPublishTable(String alias, Table<AskResponseEventPublishRecord> aliased) {

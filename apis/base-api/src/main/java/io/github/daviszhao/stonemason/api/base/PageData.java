@@ -18,7 +18,7 @@ public class PageData<T extends Serializable> implements Serializable {
     private int totalItems, totalPages, currentPage;
     private List<T> items;
 
-    public <OUTPUT extends Serializable> PageData<OUTPUT> transform(Function<T, OUTPUT> mapper) {
+    public <O extends Serializable> PageData<O> transform(Function<T, O> mapper) {
         return new PageData<>(totalItems, totalPages, currentPage, items.stream().map(mapper).collect(toList()));
     }
 

@@ -2,6 +2,8 @@ package io.github.daviszhao.stonemason.user.service;
 
 import io.github.daviszhao.stonemason.api.base.PageData;
 import io.github.daviszhao.stonemason.api.user.UserService;
+import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
+import io.github.daviszhao.stonemason.busEvent.services.EventService;
 import io.github.daviszhao.stonemason.db.user.tables.UserTable;
 import io.github.daviszhao.stonemason.db.user.tables.daos.UserDao;
 import io.github.daviszhao.stonemason.exceptions.user.UserExistExption;
@@ -22,6 +24,8 @@ import static org.springframework.util.StringUtils.hasText;
 public class UserServiceImpl implements UserService {
     @Inject
     private UserDao userDao;
+    @Inject
+    private EventService eventService;
 
     @Override
     public List<User> queryAllUsers(String keyword, Boolean locked) {
@@ -95,6 +99,11 @@ public class UserServiceImpl implements UserService {
         User user = getUser(userID);
         if (user == null) throw new UsetNotExistException(userID);
         userDao.delete(user);
+    }
+
+    @Override
+    public void testEvent() {
+        eventService.prepairNotifyEvent("event.user.test", new EventPayload().with("name", "daviszhao").with("time", LocalDateTime.now()));
     }
 
 }

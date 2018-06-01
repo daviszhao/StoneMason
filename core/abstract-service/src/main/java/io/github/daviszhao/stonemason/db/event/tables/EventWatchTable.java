@@ -5,6 +5,8 @@ package io.github.daviszhao.stonemason.db.event.tables;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.ExtraParams;
+import io.github.daviszhao.stonemason.db.base.utils.JsonObjectsConverter;
 import io.github.daviszhao.stonemason.db.event.Keys;
 import io.github.daviszhao.stonemason.db.event.tables.records.EventWatchRecord;
 import org.jooq.*;
@@ -31,7 +33,7 @@ public class EventWatchTable extends TableImpl<EventWatchRecord> {
     /**
      * The reference instance of <code>user.t_event_watch</code>
      */
-    public static final EventWatchTable eventWatch = new EventWatchTable();
+    public static final EventWatchTable EVENT_WATCH = new EventWatchTable();
     private static final long serialVersionUID = 329891240;
     /**
      * The column <code>user.t_event_watch.id</code>.
@@ -40,11 +42,12 @@ public class EventWatchTable extends TableImpl<EventWatchRecord> {
     /**
      * The column <code>user.t_event_watch.extraParams</code>.
      */
-    public final TableField<EventWatchRecord, String> EXTRAPARAMS = createField("extraParams", org.jooq.impl.SQLDataType.CLOB, this, "");
+    public final TableField<EventWatchRecord, ExtraParams> EXTRAPARAMS = createField("extraParams", org.jooq.impl.SQLDataType.CLOB, this, "", new JsonObjectsConverter<>(ExtraParams.class));
+
     /**
      * The column <code>user.t_event_watch.askEventIds</code>.
      */
-    public final TableField<EventWatchRecord, String> ASKEVENTIDS = createField("askEventIds", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+    public final TableField<EventWatchRecord, String> ASKEVENTIDS = createField("askEventIds", SQLDataType.VARCHAR.length(255), this, "");
     /**
      * The column <code>user.t_event_watch.callbackClass</code>.
      */
@@ -61,10 +64,13 @@ public class EventWatchTable extends TableImpl<EventWatchRecord> {
      * The column <code>user.t_event_watch.timeoutTime</code>.
      */
     public final TableField<EventWatchRecord, LocalDateTime> TIMEOUTTIME = createField("timeoutTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
+    public final TableField<EventWatchRecord, LocalDateTime> CREATETIME = createField("createTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
+    public final TableField<EventWatchRecord, LocalDateTime> UPDATETIME = createField("updateTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
     /**
      * The column <code>user.t_event_watch.version</code>.
      */
     public final TableField<EventWatchRecord, Integer> VERSION = createField("version", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+
 
     /**
      * Create a <code>user.t_event_watch</code> table reference
@@ -77,7 +83,7 @@ public class EventWatchTable extends TableImpl<EventWatchRecord> {
      * Create an aliased <code>user.t_event_watch</code> table reference
      */
     public EventWatchTable(String alias) {
-        this(alias, eventWatch);
+        this(alias, EVENT_WATCH);
     }
 
     private EventWatchTable(String alias, Table<EventWatchRecord> aliased) {

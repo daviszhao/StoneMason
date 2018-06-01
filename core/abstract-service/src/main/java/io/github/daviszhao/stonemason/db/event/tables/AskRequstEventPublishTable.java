@@ -6,6 +6,8 @@ package io.github.daviszhao.stonemason.db.event.tables;
 
 import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
+import io.github.daviszhao.stonemason.db.base.utils.JsonObjectsConverter;
 import io.github.daviszhao.stonemason.db.event.Keys;
 import io.github.daviszhao.stonemason.db.event.tables.records.AskRequstEventPublishRecord;
 import org.jooq.*;
@@ -15,6 +17,7 @@ import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
 
 import javax.annotation.Generated;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,7 +44,7 @@ public class AskRequstEventPublishTable extends TableImpl<AskRequstEventPublishR
     /**
      * The column <code>user.t_ask_requst_event_publish.payload</code>.
      */
-    public final TableField<AskRequstEventPublishRecord, String> PAYLOAD = createField("payload", org.jooq.impl.SQLDataType.CLOB, this, "");
+    public final TableField<AskRequstEventPublishRecord, EventPayload> PAYLOAD = createField("payload", org.jooq.impl.SQLDataType.CLOB, this, "", new JsonObjectsConverter<>(EventPayload.class));
     /**
      * The column <code>user.t_ask_requst_event_publish.status</code>. 'NEW','PROCESSED','IGNORE'
      */
@@ -66,6 +69,8 @@ public class AskRequstEventPublishTable extends TableImpl<AskRequstEventPublishR
      * The column <code>user.t_ask_requst_event_publish.version</code>.
      */
     public final TableField<AskRequstEventPublishRecord, Integer> VERSION = createField("version", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<AskRequstEventPublishRecord, LocalDateTime> CREATETIME = createField("createTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
+    public final TableField<AskRequstEventPublishRecord, LocalDateTime> UPDATETIME = createField("updateTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
 
     /**
      * Create a <code>user.t_ask_requst_event_publish</code> table reference

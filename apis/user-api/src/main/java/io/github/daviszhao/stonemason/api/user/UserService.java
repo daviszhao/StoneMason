@@ -60,4 +60,8 @@ public interface UserService {
     @ApiOperation("按用户ID删除用户")
     @RequestMapping(value = "/userByID", method = {DELETE})
     void deleteUser(@ApiParam(value = "用户ID", required = true) int userID);
+
+    @ApiOperation("测试事件")
+    @RequestMapping(value = "/testEvent", method = GET)
+    void testEvent();
 }

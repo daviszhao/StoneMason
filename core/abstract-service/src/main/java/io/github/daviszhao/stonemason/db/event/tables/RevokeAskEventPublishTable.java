@@ -5,6 +5,8 @@ package io.github.daviszhao.stonemason.db.event.tables;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
+import io.github.daviszhao.stonemason.db.base.utils.JsonObjectsConverter;
 import io.github.daviszhao.stonemason.db.event.Keys;
 import io.github.daviszhao.stonemason.db.event.tables.records.RevokeAskEventPublishRecord;
 import org.jooq.*;
@@ -14,6 +16,7 @@ import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
 
 import javax.annotation.Generated;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,7 +34,7 @@ public class RevokeAskEventPublishTable extends TableImpl<RevokeAskEventPublishR
     /**
      * The reference instance of <code>user.t_revoke_ask_event_publish</code>
      */
-    public static final RevokeAskEventPublishTable revokeAskEventPublish = new RevokeAskEventPublishTable();
+    public static final RevokeAskEventPublishTable REVOKE_ASK_EVENT_PUBLISH = new RevokeAskEventPublishTable();
     private static final long serialVersionUID = -468175954;
     /**
      * The column <code>user.t_revoke_ask_event_publish.id</code>.
@@ -40,7 +43,7 @@ public class RevokeAskEventPublishTable extends TableImpl<RevokeAskEventPublishR
     /**
      * The column <code>user.t_revoke_ask_event_publish.payload</code>.
      */
-    public final TableField<RevokeAskEventPublishRecord, String> PAYLOAD = createField("payload", org.jooq.impl.SQLDataType.CLOB, this, "");
+    public final TableField<RevokeAskEventPublishRecord, EventPayload> PAYLOAD = createField("payload", org.jooq.impl.SQLDataType.CLOB, this, "", new JsonObjectsConverter<>(EventPayload.class));
     /**
      * The column <code>user.t_revoke_ask_event_publish.status</code>. 'NEW','PROCESSED','IGNORE'
      */
@@ -61,6 +64,8 @@ public class RevokeAskEventPublishTable extends TableImpl<RevokeAskEventPublishR
      * The column <code>user.t_revoke_ask_event_publish.eventType</code>.
      */
     public final TableField<RevokeAskEventPublishRecord, String> EVENTTYPE = createField("eventType", org.jooq.impl.SQLDataType.VARCHAR.length(50).nullable(false), this, "");
+    public final TableField<RevokeAskEventPublishRecord, LocalDateTime> CREATETIME = createField("createTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
+    public final TableField<RevokeAskEventPublishRecord, LocalDateTime> UPDATETIME = createField("updateTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
 
     /**
      * Create a <code>user.t_revoke_ask_event_publish</code> table reference
@@ -73,7 +78,7 @@ public class RevokeAskEventPublishTable extends TableImpl<RevokeAskEventPublishR
      * Create an aliased <code>user.t_revoke_ask_event_publish</code> table reference
      */
     public RevokeAskEventPublishTable(String alias) {
-        this(alias, revokeAskEventPublish);
+        this(alias, REVOKE_ASK_EVENT_PUBLISH);
     }
 
     private RevokeAskEventPublishTable(String alias, Table<RevokeAskEventPublishRecord> aliased) {

@@ -1,9 +1,9 @@
-
 package io.github.daviszhao.stonemason.db.event.tables.daos;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
 import io.github.daviszhao.stonemason.db.base.daos.AbstractDao;
 import io.github.daviszhao.stonemason.db.event.tables.AskRequstEventPublishTable;
 import io.github.daviszhao.stonemason.db.event.tables.records.AskRequstEventPublishRecord;
@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Generated;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -67,7 +68,7 @@ public class AskRequstEventPublishDao extends AbstractDao<AskRequstEventPublishR
     /**
      * Fetch records that have <code>payload IN (values)</code>
      */
-    public List<AskRequstEventPublish> fetchByPayload(String... values) {
+    public List<AskRequstEventPublish> fetchByPayload(EventPayload... values) {
         return fetch(AskRequstEventPublishTable.askRequstEventPublish.PAYLOAD, values);
     }
 
@@ -118,5 +119,10 @@ public class AskRequstEventPublishDao extends AbstractDao<AskRequstEventPublishR
      */
     public List<AskRequstEventPublish> fetchByVersion(Integer... values) {
         return fetch(AskRequstEventPublishTable.askRequstEventPublish.VERSION, values);
+    }
+
+    public List<AskRequstEventPublish> fetchByEventid(List<String> eventIds) {
+        if (eventIds == null || eventIds.size() == 0) return Collections.emptyList();
+        return fetchByEventid(eventIds.toArray(new String[0]));
     }
 }

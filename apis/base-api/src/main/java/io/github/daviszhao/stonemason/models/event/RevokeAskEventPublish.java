@@ -21,7 +21,6 @@ import javax.validation.constraints.Size;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
 public class RevokeAskEventPublish extends AbstractEventPublish {
@@ -39,6 +38,8 @@ public class RevokeAskEventPublish extends AbstractEventPublish {
         this.askeventid = value.askeventid;
         this.setVersion(value.getVersion());
         this.setEventtype(value.getEventtype());
+        this.setCreateTime(value.getCreateTime());
+        this.setUpdateTime(value.getUpdateTime());
     }
 
     @Override

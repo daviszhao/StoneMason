@@ -3,6 +3,7 @@ package io.github.daviszhao.stonemason.db.event.tables.daos;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
 import io.github.daviszhao.stonemason.db.base.daos.AbstractDao;
 import io.github.daviszhao.stonemason.db.event.tables.NotifyEventPublishTable;
 import io.github.daviszhao.stonemason.db.event.tables.records.NotifyEventPublishRecord;
@@ -30,7 +31,7 @@ public class NotifyEventPublishDao extends AbstractDao<NotifyEventPublishRecord,
      * Create a new NotifyEventPublishDao without any configuration
      */
     public NotifyEventPublishDao() {
-        super(NotifyEventPublishTable.notifyEventPublish, NotifyEventPublish.class);
+        super(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH, NotifyEventPublish.class);
     }
 
     /**
@@ -38,7 +39,7 @@ public class NotifyEventPublishDao extends AbstractDao<NotifyEventPublishRecord,
      */
     @Autowired
     public NotifyEventPublishDao(Configuration configuration) {
-        super(NotifyEventPublishTable.notifyEventPublish, NotifyEventPublish.class, configuration);
+        super(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH, NotifyEventPublish.class, configuration);
     }
 
     /**
@@ -53,21 +54,21 @@ public class NotifyEventPublishDao extends AbstractDao<NotifyEventPublishRecord,
      * Fetch records that have <code>id IN (values)</code>
      */
     public List<NotifyEventPublish> fetchById(Integer... values) {
-        return fetch(NotifyEventPublishTable.notifyEventPublish.ID, values);
+        return fetch(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH.ID, values);
     }
 
     /**
      * Fetch a unique record that has <code>id = value</code>
      */
     public NotifyEventPublish fetchOneById(Integer value) {
-        return fetchOne(NotifyEventPublishTable.notifyEventPublish.ID, value);
+        return fetchOne(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH.ID, value);
     }
 
     /**
      * Fetch records that have <code>payload IN (values)</code>
      */
-    public List<NotifyEventPublish> fetchByPayload(String... values) {
-        return fetch(NotifyEventPublishTable.notifyEventPublish.PAYLOAD, values);
+    public List<NotifyEventPublish> fetchByPayload(EventPayload... values) {
+        return fetch(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH.PAYLOAD, values);
     }
 
     /**
@@ -75,34 +76,34 @@ public class NotifyEventPublishDao extends AbstractDao<NotifyEventPublishRecord,
      */
     public List<NotifyEventPublish> fetchByStatus(ProcessStatus... values) {
 
-        return fetch(NotifyEventPublishTable.notifyEventPublish.STATUS, values);
+        return fetch(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH.STATUS, values);
     }
 
     /**
      * Fetch records that have <code>eventId IN (values)</code>
      */
     public List<NotifyEventPublish> fetchByEventid(String... values) {
-        return fetch(NotifyEventPublishTable.notifyEventPublish.EVENTID, values);
+        return fetch(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH.EVENTID, values);
     }
 
     /**
      * Fetch a unique record that has <code>eventId = value</code>
      */
     public NotifyEventPublish fetchOneByEventid(String value) {
-        return fetchOne(NotifyEventPublishTable.notifyEventPublish.EVENTID, value);
+        return fetchOne(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH.EVENTID, value);
     }
 
     /**
      * Fetch records that have <code>version IN (values)</code>
      */
     public List<NotifyEventPublish> fetchByVersion(Integer... values) {
-        return fetch(NotifyEventPublishTable.notifyEventPublish.VERSION, values);
+        return fetch(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH.VERSION, values);
     }
 
     /**
      * Fetch records that have <code>eventType IN (values)</code>
      */
     public List<NotifyEventPublish> fetchByEventtype(String... values) {
-        return fetch(NotifyEventPublishTable.notifyEventPublish.EVENTTYPE, values);
+        return fetch(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH.EVENTTYPE, values);
     }
 }

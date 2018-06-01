@@ -1,8 +1,8 @@
-
 package io.github.daviszhao.stonemason.db.event.tables.daos;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.ExtraParams;
 import io.github.daviszhao.stonemason.db.base.daos.AbstractDao;
 import io.github.daviszhao.stonemason.db.event.tables.EventWatchTable;
 import io.github.daviszhao.stonemason.db.event.tables.records.EventWatchRecord;
@@ -27,11 +27,13 @@ import java.util.List;
 @Repository
 public class EventWatchDao extends AbstractDao<EventWatchRecord, EventWatch, Integer> {
 
+    private EventWatchTable table;
+
     /**
      * Create a new EventWatchDao without any configuration
      */
     public EventWatchDao() {
-        super(EventWatchTable.eventWatch, EventWatch.class);
+        super(EventWatchTable.EVENT_WATCH, EventWatch.class);
     }
 
     /**
@@ -39,7 +41,7 @@ public class EventWatchDao extends AbstractDao<EventWatchRecord, EventWatch, Int
      */
     @Autowired
     public EventWatchDao(Configuration configuration) {
-        super(EventWatchTable.eventWatch, EventWatch.class, configuration);
+        super(EventWatchTable.EVENT_WATCH, EventWatch.class, configuration);
     }
 
     /**
@@ -54,62 +56,70 @@ public class EventWatchDao extends AbstractDao<EventWatchRecord, EventWatch, Int
      * Fetch records that have <code>id IN (values)</code>
      */
     public List<EventWatch> fetchById(Integer... values) {
-        return fetch(EventWatchTable.eventWatch.ID, values);
+        return fetch(EventWatchTable.EVENT_WATCH.ID, values);
     }
 
     /**
      * Fetch a unique record that has <code>id = value</code>
      */
     public EventWatch fetchOneById(Integer value) {
-        return fetchOne(EventWatchTable.eventWatch.ID, value);
+        return fetchOne(EventWatchTable.EVENT_WATCH.ID, value);
     }
 
     /**
      * Fetch records that have <code>extraParams IN (values)</code>
      */
-    public List<EventWatch> fetchByExtraparams(String... values) {
-        return fetch(EventWatchTable.eventWatch.EXTRAPARAMS, values);
+    public List<EventWatch> fetchByExtraparams(ExtraParams... values) {
+        return fetch(EventWatchTable.EVENT_WATCH.EXTRAPARAMS, values);
     }
 
     /**
      * Fetch records that have <code>askEventIds IN (values)</code>
      */
     public List<EventWatch> fetchByAskeventids(String... values) {
-        return fetch(EventWatchTable.eventWatch.ASKEVENTIDS, values);
+        return fetch(EventWatchTable.EVENT_WATCH.ASKEVENTIDS, values);
     }
 
     /**
      * Fetch records that have <code>callbackClass IN (values)</code>
      */
     public List<EventWatch> fetchByCallbackclass(String... values) {
-        return fetch(EventWatchTable.eventWatch.CALLBACKCLASS, values);
+        return fetch(EventWatchTable.EVENT_WATCH.CALLBACKCLASS, values);
     }
 
     /**
      * Fetch records that have <code>united IN (values)</code>
      */
     public List<EventWatch> fetchByUnited(Boolean... values) {
-        return fetch(EventWatchTable.eventWatch.UNITED, values);
+        return fetch(EventWatchTable.EVENT_WATCH.UNITED, values);
     }
 
     /**
      * Fetch records that have <code>askEventStatus IN (values)</code>
      */
     public List<EventWatch> fetchByAskeventstatus(AskEventStatus... values) {
-        return fetch(EventWatchTable.eventWatch.ASKEVENTSTATUS, values);
+        return fetch(EventWatchTable.EVENT_WATCH.ASKEVENTSTATUS, values);
     }
 
     /**
      * Fetch records that have <code>timeoutTime IN (values)</code>
      */
     public List<EventWatch> fetchByTimeouttime(LocalDateTime... values) {
-        return fetch(EventWatchTable.eventWatch.TIMEOUTTIME, values);
+        return fetch(EventWatchTable.EVENT_WATCH.TIMEOUTTIME, values);
     }
 
     /**
      * Fetch records that have <code>version IN (values)</code>
      */
     public List<EventWatch> fetchByVersion(Integer... values) {
-        return fetch(EventWatchTable.eventWatch.VERSION, values);
+        table = EventWatchTable.EVENT_WATCH;
+        return fetch(table.VERSION, values);
+    }
+
+    public List<EventWatch> findByAskEventStatusAndTimeoutTimeBefore(AskEventStatus status, LocalDateTime time) {
+        return context().selectFrom(table).where(
+                table.ASKEVENTSTATUS.eq(status), table.TIMEOUTTIME.lt(time)
+        ).orderBy(table.CREATETIME.desc()).fetch()
+                .map(mapper());
     }
 }

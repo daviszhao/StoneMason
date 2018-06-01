@@ -1,6 +1,7 @@
 package io.github.daviszhao.stonemason.models.event;
 
 
+import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
 import io.github.daviszhao.stonemason.busEvent.constants.EventCategory;
 import lombok.*;
 
@@ -19,7 +20,6 @@ import javax.validation.constraints.Size;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
 @SuppressWarnings({"all", "unchecked", "rawtypes"})
@@ -27,7 +27,7 @@ public class AskRequstEventPublish extends AbstractEventPublish {
 
     private static final long serialVersionUID = -151363166;
     @Size(max = 20)
-    private String askeventstatus;
+    private AskEventStatus askeventstatus;
     private Integer watchid;
 
     public AskRequstEventPublish(AskRequstEventPublish value) {
@@ -37,7 +37,9 @@ public class AskRequstEventPublish extends AbstractEventPublish {
         this.setEventid(value.getEventid());
         this.askeventstatus = value.askeventstatus;
         this.watchid = value.watchid;
-        this.setEventtype(value.getEventtype());
+        this.setCreateTime(value.getCreateTime());
+        this.setUpdateTime(value.getUpdateTime());
+        this.setEventtype(getEventtype());
         setVersion(value.getVersion());
     }
 
@@ -45,4 +47,5 @@ public class AskRequstEventPublish extends AbstractEventPublish {
     public EventCategory getEventCategory() {
         return EventCategory.ASK;
     }
+
 }

@@ -20,7 +20,7 @@ public abstract class AbstractDao<R extends UpdatableRecord<R>, E extends Serial
     }
 
 
-    private DSLContext context() {
+    protected DSLContext context() {
         return DSL.using(configuration());
     }
 

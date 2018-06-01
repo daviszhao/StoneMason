@@ -4,12 +4,16 @@
 package io.github.daviszhao.stonemason.db.event.tables;
 
 
+import io.github.daviszhao.stonemason.busEvent.constants.EventCategory;
+import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
 import io.github.daviszhao.stonemason.db.event.Keys;
 import io.github.daviszhao.stonemason.db.event.tables.records.EventProcessRecord;
 import org.jooq.*;
+import org.jooq.impl.EnumConverter;
 import org.jooq.impl.TableImpl;
 
 import javax.annotation.Generated;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,7 +31,7 @@ public class EventProcessTable extends TableImpl<EventProcessRecord> {
     /**
      * The reference instance of <code>user.t_event_process</code>
      */
-    public static final EventProcessTable eventProcess = new EventProcessTable();
+    public static final EventProcessTable EVENT_PROCESS = new EventProcessTable();
     private static final long serialVersionUID = 1981840561;
     /**
      * The column <code>user.t_event_process.id</code>.
@@ -40,11 +44,11 @@ public class EventProcessTable extends TableImpl<EventProcessRecord> {
     /**
      * The column <code>user.t_event_process.status</code>. 'NEW','PROCESSED','IGNORE'
      */
-    public final TableField<EventProcessRecord, String> STATUS = createField("status", org.jooq.impl.SQLDataType.VARCHAR.length(20).nullable(false).defaultValue(org.jooq.impl.DSL.inline("NEW", org.jooq.impl.SQLDataType.VARCHAR)), this, "'NEW','PROCESSED','IGNORE'");
+    public final TableField<EventProcessRecord, ProcessStatus> STATUS = createField("status", org.jooq.impl.SQLDataType.VARCHAR.length(20).nullable(false).defaultValue(org.jooq.impl.DSL.inline("NEW", org.jooq.impl.SQLDataType.VARCHAR)), this, "'NEW','PROCESSED','IGNORE'", new EnumConverter<>(String.class, ProcessStatus.class));
     /**
      * The column <code>user.t_event_process.eventCategory</code>. 'NOTIFY','ASK','REVOKE','ASKRESP'
      */
-    public final TableField<EventProcessRecord, String> EVENTCATEGORY = createField("eventCategory", org.jooq.impl.SQLDataType.VARCHAR.length(20).nullable(false), this, "'NOTIFY','ASK','REVOKE','ASKRESP'");
+    public final TableField<EventProcessRecord, EventCategory> EVENTCATEGORY = createField("eventCategory", org.jooq.impl.SQLDataType.VARCHAR.length(20).nullable(false), this, "'NOTIFY','ASK','REVOKE','ASKRESP'", new EnumConverter<>(String.class, EventCategory.class));
     /**
      * The column <code>user.t_event_process.eventId</code>.
      */
@@ -57,6 +61,8 @@ public class EventProcessTable extends TableImpl<EventProcessRecord> {
      * The column <code>user.t_event_process.version</code>.
      */
     public final TableField<EventProcessRecord, Integer> VERSION = createField("version", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<EventProcessRecord, LocalDateTime> CREATETIME = createField("createTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
+    public final TableField<EventProcessRecord, LocalDateTime> UPDATETIME = createField("updateTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
 
     /**
      * Create a <code>user.t_event_process</code> table reference
@@ -69,7 +75,7 @@ public class EventProcessTable extends TableImpl<EventProcessRecord> {
      * Create an aliased <code>user.t_event_process</code> table reference
      */
     public EventProcessTable(String alias) {
-        this(alias, eventProcess);
+        this(alias, EVENT_PROCESS);
     }
 
     private EventProcessTable(String alias, Table<EventProcessRecord> aliased) {

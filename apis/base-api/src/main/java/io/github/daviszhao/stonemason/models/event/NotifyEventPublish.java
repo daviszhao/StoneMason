@@ -1,11 +1,16 @@
-
 package io.github.daviszhao.stonemason.models.event;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.EventCategory;
-import lombok.*;
+import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.annotation.Generated;
+import java.time.LocalDateTime;
 
 
 @Generated(
@@ -19,8 +24,7 @@ import javax.annotation.Generated;
 @Setter
 @Getter
 @NoArgsConstructor
-//@AllArgsConstructor
-@ToString
+//@ToString
 @EqualsAndHashCode(callSuper = false)
 public class NotifyEventPublish extends AbstractEventPublish {
 
@@ -34,6 +38,12 @@ public class NotifyEventPublish extends AbstractEventPublish {
         this.setEventid(value.getEventid());
         this.setVersion(value.getVersion());
         this.setEventtype(value.getEventtype());
+        this.setCreateTime(value.getCreateTime());
+        this.setUpdateTime(value.getUpdateTime());
+    }
+
+    public NotifyEventPublish(String type, EventPayload payload) {
+        super(null, payload, ProcessStatus.NEW, null, type, LocalDateTime.now(), null);
     }
 
     @Override

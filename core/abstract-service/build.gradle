@@ -10,3 +10,4 @@ dependencies {
     compileOnly 'javax.inject:javax.inject'
 
 }
+idea.module.excludeDirs += file('src/main/java/io/github/daviszhao/stonemason/busEvent/services/old')

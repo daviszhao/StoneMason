@@ -4,12 +4,18 @@
 package io.github.daviszhao.stonemason.db.event.tables;
 
 
+import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.FailureInfo;
+import io.github.daviszhao.stonemason.db.base.utils.JsonObjectsConverter;
 import io.github.daviszhao.stonemason.db.event.Keys;
 import io.github.daviszhao.stonemason.db.event.tables.records.EventWatchProcessRecord;
 import org.jooq.*;
+import org.jooq.impl.EnumConverter;
+import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
 
 import javax.annotation.Generated;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,7 +33,7 @@ public class EventWatchProcessTable extends TableImpl<EventWatchProcessRecord> {
     /**
      * The reference instance of <code>user.t_event_watch_process</code>
      */
-    public static final EventWatchProcessTable eventWatchProcess = new EventWatchProcessTable();
+    public static final EventWatchProcessTable EVENT_WATCH_PROCESS = new EventWatchProcessTable();
     private static final long serialVersionUID = -1677021889;
     /**
      * The column <code>user.t_event_watch_process.id</code>.
@@ -40,15 +46,17 @@ public class EventWatchProcessTable extends TableImpl<EventWatchProcessRecord> {
     /**
      * The column <code>user.t_event_watch_process.status</code>. 'NEW','PROCESSED','IGNORE'
      */
-    public final TableField<EventWatchProcessRecord, String> STATUS = createField("status", org.jooq.impl.SQLDataType.VARCHAR.length(20).nullable(false), this, "'NEW','PROCESSED','IGNORE'");
+    public final TableField<EventWatchProcessRecord, ProcessStatus> STATUS = createField("status", SQLDataType.VARCHAR.length(20).nullable(false), this, "'NEW','PROCESSED','IGNORE'", new EnumConverter<>(String.class, ProcessStatus.class));
     /**
      * The column <code>user.t_event_watch_process.failureInfo</code>.
      */
-    public final TableField<EventWatchProcessRecord, String> FAILUREINFO = createField("failureInfo", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "");
+    public final TableField<EventWatchProcessRecord, FailureInfo> FAILUREINFO = createField("failureInfo", org.jooq.impl.SQLDataType.VARCHAR.length(255).nullable(false), this, "", new JsonObjectsConverter<>(FailureInfo.class));
     /**
      * The column <code>user.t_event_watch_process.version</code>.
      */
     public final TableField<EventWatchProcessRecord, Integer> VERSION = createField("version", org.jooq.impl.SQLDataType.INTEGER.nullable(false).defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
+    public final TableField<EventWatchProcessRecord, LocalDateTime> CREATETIME = createField("createTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
+    public final TableField<EventWatchProcessRecord, LocalDateTime> UPDATETIME = createField("updateTime", org.jooq.impl.SQLDataType.LOCALDATETIME, this, "");
 
     /**
      * Create a <code>user.t_event_watch_process</code> table reference
@@ -61,7 +69,7 @@ public class EventWatchProcessTable extends TableImpl<EventWatchProcessRecord> {
      * Create an aliased <code>user.t_event_watch_process</code> table reference
      */
     public EventWatchProcessTable(String alias) {
-        this(alias, eventWatchProcess);
+        this(alias, EVENT_WATCH_PROCESS);
     }
 
     private EventWatchProcessTable(String alias, Table<EventWatchProcessRecord> aliased) {

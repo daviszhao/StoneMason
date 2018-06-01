@@ -3,6 +3,7 @@ package io.github.daviszhao.stonemason.db.event.tables.daos;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
 import io.github.daviszhao.stonemason.db.base.daos.AbstractDao;
 import io.github.daviszhao.stonemason.db.event.tables.AskResponseEventPublishTable;
 import io.github.daviszhao.stonemason.db.event.tables.records.AskResponseEventPublishRecord;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.Generated;
 import java.util.List;
+
+import static org.jooq.impl.DSL.selectFrom;
 
 
 @Generated(
@@ -26,11 +29,13 @@ import java.util.List;
 @Repository
 public class AskResponseEventPublishDao extends AbstractDao<AskResponseEventPublishRecord, AskResponseEventPublish, Integer> {
 
+    public static final AskResponseEventPublishTable TABLE = AskResponseEventPublishTable.ASK_RESPONSE_EVENT_PUBLISH;
+
     /**
      * Create a new AskResponseEventPublishDao without any configuration
      */
     public AskResponseEventPublishDao() {
-        super(AskResponseEventPublishTable.askResponseEventPublish, AskResponseEventPublish.class);
+        super(TABLE, AskResponseEventPublish.class);
     }
 
     /**
@@ -38,7 +43,7 @@ public class AskResponseEventPublishDao extends AbstractDao<AskResponseEventPubl
      */
     @Autowired
     public AskResponseEventPublishDao(Configuration configuration) {
-        super(AskResponseEventPublishTable.askResponseEventPublish, AskResponseEventPublish.class, configuration);
+        super(TABLE, AskResponseEventPublish.class, configuration);
     }
 
     /**
@@ -53,69 +58,73 @@ public class AskResponseEventPublishDao extends AbstractDao<AskResponseEventPubl
      * Fetch records that have <code>id IN (values)</code>
      */
     public List<AskResponseEventPublish> fetchById(Integer... values) {
-        return fetch(AskResponseEventPublishTable.askResponseEventPublish.ID, values);
+        return fetch(TABLE.ID, values);
     }
 
     /**
      * Fetch a unique record that has <code>id = value</code>
      */
     public AskResponseEventPublish fetchOneById(Integer value) {
-        return fetchOne(AskResponseEventPublishTable.askResponseEventPublish.ID, value);
+        return fetchOne(TABLE.ID, value);
     }
 
     /**
      * Fetch records that have <code>payload IN (values)</code>
      */
-    public List<AskResponseEventPublish> fetchByPayload(String... values) {
-        return fetch(AskResponseEventPublishTable.askResponseEventPublish.PAYLOAD, values);
+    public List<AskResponseEventPublish> fetchByPayload(EventPayload... values) {
+        return fetch(TABLE.PAYLOAD, values);
     }
 
     /**
      * Fetch records that have <code>status IN (values)</code>
      */
     public List<AskResponseEventPublish> fetchByStatus(ProcessStatus... values) {
-        return fetch(AskResponseEventPublishTable.askResponseEventPublish.STATUS, values);
+        return fetch(TABLE.STATUS, values);
     }
 
     /**
      * Fetch records that have <code>eventId IN (values)</code>
      */
     public List<AskResponseEventPublish> fetchByEventid(String... values) {
-        return fetch(AskResponseEventPublishTable.askResponseEventPublish.EVENTID, values);
+        return fetch(TABLE.EVENTID, values);
     }
 
     /**
      * Fetch a unique record that has <code>eventId = value</code>
      */
     public AskResponseEventPublish fetchOneByEventid(String value) {
-        return fetchOne(AskResponseEventPublishTable.askResponseEventPublish.EVENTID, value);
+        return fetchOne(TABLE.EVENTID, value);
     }
 
     /**
      * Fetch records that have <code>success IN (values)</code>
      */
     public List<AskResponseEventPublish> fetchBySuccess(Boolean... values) {
-        return fetch(AskResponseEventPublishTable.askResponseEventPublish.SUCCESS, values);
+        return fetch(TABLE.SUCCESS, values);
     }
 
     /**
      * Fetch records that have <code>askEventId IN (values)</code>
      */
     public List<AskResponseEventPublish> fetchByAskeventid(String... values) {
-        return fetch(AskResponseEventPublishTable.askResponseEventPublish.ASKEVENTID, values);
+        return fetch(TABLE.ASKEVENTID, values);
     }
 
     /**
      * Fetch records that have <code>eventType IN (values)</code>
      */
     public List<AskResponseEventPublish> fetchByEventtype(String... values) {
-        return fetch(AskResponseEventPublishTable.askResponseEventPublish.EVENTTYPE, values);
+        return fetch(TABLE.EVENTTYPE, values);
     }
 
     /**
      * Fetch records that have <code>version IN (values)</code>
      */
     public List<AskResponseEventPublish> fetchByVersion(Integer... values) {
-        return fetch(AskResponseEventPublishTable.askResponseEventPublish.VERSION, values);
+        return fetch(TABLE.VERSION, values);
+    }
+
+    public int countByAskEventId(String askEventId) {
+        return context().fetchCount(selectFrom(TABLE).where(TABLE.ASKEVENTID.eq(askEventId)));
     }
 }

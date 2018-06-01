@@ -1,13 +1,18 @@
-
 package io.github.daviszhao.stonemason.models.event;
 
 
+import io.github.daviszhao.stonemason.busEvent.constants.EventCategory;
+import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
 import io.github.daviszhao.stonemason.models.base.BaseModel;
 import lombok.*;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
+
+import static io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus.NEW;
 
 
 @Generated(
@@ -21,7 +26,6 @@ import javax.validation.constraints.Size;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
 public class EventProcess extends BaseModel {
@@ -31,17 +35,18 @@ public class EventProcess extends BaseModel {
     @NotNull
     private Integer id;
     @Size(max = 65535)
-    private String payload;
+    private EventPayload payload;
     @Size(max = 20)
-    private String status;
+    private ProcessStatus status;
     @NotNull
     @Size(max = 20)
-    private String eventcategory;
+    private EventCategory eventcategory;
     @Size(max = 50)
     private String eventid;
     @NotNull
     @Size(max = 50)
     private String eventtype;
+    private LocalDateTime createTime, updateTime;
 
 
     public EventProcess(EventProcess value) {
@@ -52,6 +57,19 @@ public class EventProcess extends BaseModel {
         this.eventid = value.eventid;
         this.eventtype = value.eventtype;
         this.setVersion(value.getVersion());
+        this.createTime = value.createTime;
+        this.updateTime = value.updateTime;
+
     }
 
+    public EventProcess(String type, EventCategory category, EventPayload payLoad, final String eventid) {
+        this.id = null;
+        this.payload = payload;
+        this.status = NEW;
+        this.eventcategory = category;
+        this.eventid = eventid;
+        this.eventtype = type;
+        this.setVersion(0);
+        this.createTime = LocalDateTime.now();
+    }
 }

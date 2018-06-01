@@ -1,0 +1,26 @@
+spring:
+     application:
+      name: order-service
+     devtools:
+       livereload:
+         port: 4321
+     cloud:
+       config:
+         discovery:
+           enabled: true
+           service-id: config-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:passwd@127.0.0.1:7777/eureka #,http://admin:passwd@127.0.0.:7778/eureka,http://admin:passwd@127.0.0.:7779/eureka
+  instance:
+    prefer-ip-address: true
+    hostname: 127.0.0.1
+
+server:
+  port: 3457
+logging:
+  level:
+    root: error
+    io.github.daviszhao: debug
+#    org.jooq: debug

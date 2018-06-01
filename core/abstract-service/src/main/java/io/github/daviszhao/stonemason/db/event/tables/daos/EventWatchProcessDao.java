@@ -1,7 +1,8 @@
-
 package io.github.daviszhao.stonemason.db.event.tables.daos;
 
 
+import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
+import io.github.daviszhao.stonemason.busEvent.payloads.FailureInfo;
 import io.github.daviszhao.stonemason.db.base.daos.AbstractDao;
 import io.github.daviszhao.stonemason.db.event.tables.EventWatchProcessTable;
 import io.github.daviszhao.stonemason.db.event.tables.records.EventWatchProcessRecord;
@@ -29,7 +30,7 @@ public class EventWatchProcessDao extends AbstractDao<EventWatchProcessRecord, E
      * Create a new EventWatchProcessDao without any configuration
      */
     public EventWatchProcessDao() {
-        super(EventWatchProcessTable.eventWatchProcess, EventWatchProcess.class);
+        super(EventWatchProcessTable.EVENT_WATCH_PROCESS, EventWatchProcess.class);
     }
 
     /**
@@ -37,7 +38,7 @@ public class EventWatchProcessDao extends AbstractDao<EventWatchProcessRecord, E
      */
     @Autowired
     public EventWatchProcessDao(Configuration configuration) {
-        super(EventWatchProcessTable.eventWatchProcess, EventWatchProcess.class, configuration);
+        super(EventWatchProcessTable.EVENT_WATCH_PROCESS, EventWatchProcess.class, configuration);
     }
 
     /**
@@ -52,34 +53,42 @@ public class EventWatchProcessDao extends AbstractDao<EventWatchProcessRecord, E
      * Fetch records that have <code>id IN (values)</code>
      */
     public List<EventWatchProcess> fetchById(Integer... values) {
-        return fetch(EventWatchProcessTable.eventWatchProcess.ID, values);
+        return fetch(EventWatchProcessTable.EVENT_WATCH_PROCESS.ID, values);
     }
 
     /**
      * Fetch a unique record that has <code>id = value</code>
      */
     public EventWatchProcess fetchOneById(Integer value) {
-        return fetchOne(EventWatchProcessTable.eventWatchProcess.ID, value);
+        return fetchOne(EventWatchProcessTable.EVENT_WATCH_PROCESS.ID, value);
     }
 
     /**
      * Fetch records that have <code>watchId IN (values)</code>
      */
     public List<EventWatchProcess> fetchByWatchid(Integer... values) {
-        return fetch(EventWatchProcessTable.eventWatchProcess.WATCHID, values);
+        return fetch(EventWatchProcessTable.EVENT_WATCH_PROCESS.WATCHID, values);
     }
 
     /**
      * Fetch records that have <code>status IN (values)</code>
      */
-    public List<EventWatchProcess> fetchByStatus(String... values) {
-        return fetch(EventWatchProcessTable.eventWatchProcess.STATUS, values);
+    public List<EventWatchProcess> fetchByStatus(ProcessStatus... values) {
+        return fetch(EventWatchProcessTable.EVENT_WATCH_PROCESS.STATUS, values);
     }
 
     /**
      * Fetch records that have <code>failureInfo IN (values)</code>
      */
-    public List<EventWatchProcess> fetchByFailureinfo(String... values) {
-        return fetch(EventWatchProcessTable.eventWatchProcess.FAILUREINFO, values);
+    public List<EventWatchProcess> fetchByFailureinfo(FailureInfo... values) {
+        return fetch(EventWatchProcessTable.EVENT_WATCH_PROCESS.FAILUREINFO, values);
+    }
+
+    public void updateStatusBatch(int[] ids, ProcessStatus status) {
+        for (int id : ids) {
+            EventWatchProcess item = fetchOneById(id);
+            item.setStatus(status);
+            update(item);
+        }
     }
 }

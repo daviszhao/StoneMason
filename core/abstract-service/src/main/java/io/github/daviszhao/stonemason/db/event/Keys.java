@@ -67,26 +67,26 @@ public class Keys {
 
     private static class Identities0 extends AbstractKeys {
         public static Identity<AskRequstEventPublishRecord, Integer> IDENTITY_askRequstEventPublish = createIdentity(AskRequstEventPublishTable.askRequstEventPublish, AskRequstEventPublishTable.askRequstEventPublish.ID);
-        public static Identity<AskResponseEventPublishRecord, Integer> IDENTITY_askResponseEventPublish = createIdentity(AskResponseEventPublishTable.askResponseEventPublish, AskResponseEventPublishTable.askResponseEventPublish.ID);
-        public static Identity<EventProcessRecord, Integer> IDENTITY_eventProcess = createIdentity(EventProcessTable.eventProcess, EventProcessTable.eventProcess.ID);
-        public static Identity<EventWatchRecord, Integer> IDENTITY_eventWatch = createIdentity(EventWatchTable.eventWatch, EventWatchTable.eventWatch.ID);
-        public static Identity<EventWatchProcessRecord, Integer> IDENTITY_eventWatchProcess = createIdentity(EventWatchProcessTable.eventWatchProcess, EventWatchProcessTable.eventWatchProcess.ID);
-        public static Identity<NotifyEventPublishRecord, Integer> IDENTITY_notifyEventPublish = createIdentity(NotifyEventPublishTable.notifyEventPublish, NotifyEventPublishTable.notifyEventPublish.ID);
-        public static Identity<RevokeAskEventPublishRecord, Integer> IDENTITY_revokeAskEventPublish = createIdentity(RevokeAskEventPublishTable.revokeAskEventPublish, RevokeAskEventPublishTable.revokeAskEventPublish.ID);
+        public static Identity<AskResponseEventPublishRecord, Integer> IDENTITY_askResponseEventPublish = createIdentity(AskResponseEventPublishTable.ASK_RESPONSE_EVENT_PUBLISH, AskResponseEventPublishTable.ASK_RESPONSE_EVENT_PUBLISH.ID);
+        public static Identity<EventProcessRecord, Integer> IDENTITY_eventProcess = createIdentity(EventProcessTable.EVENT_PROCESS, EventProcessTable.EVENT_PROCESS.ID);
+        public static Identity<EventWatchRecord, Integer> IDENTITY_eventWatch = createIdentity(EventWatchTable.EVENT_WATCH, EventWatchTable.EVENT_WATCH.ID);
+        public static Identity<EventWatchProcessRecord, Integer> IDENTITY_eventWatchProcess = createIdentity(EventWatchProcessTable.EVENT_WATCH_PROCESS, EventWatchProcessTable.EVENT_WATCH_PROCESS.ID);
+        public static Identity<NotifyEventPublishRecord, Integer> IDENTITY_notifyEventPublish = createIdentity(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH, NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH.ID);
+        public static Identity<RevokeAskEventPublishRecord, Integer> IDENTITY_revokeAskEventPublish = createIdentity(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH, RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.ID);
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
         public static final UniqueKey<AskRequstEventPublishRecord> KEY_T_ASK_REQUST_EVENT_PUBLISH_PRIMARY = createUniqueKey(AskRequstEventPublishTable.askRequstEventPublish, "KEY_t_ask_requst_event_publish_PRIMARY", AskRequstEventPublishTable.askRequstEventPublish.ID);
         public static final UniqueKey<AskRequstEventPublishRecord> KEY_T_ASK_REQUST_EVENT_PUBLISH_UK_ASKREQ__PUBLISH_EVENTID = createUniqueKey(AskRequstEventPublishTable.askRequstEventPublish, "KEY_t_ask_requst_event_publish_UK_ASKREQ__PUBLISH_EVENTID", AskRequstEventPublishTable.askRequstEventPublish.EVENTID);
-        public static final UniqueKey<AskResponseEventPublishRecord> KEY_T_ASK_RESPONSE_EVENT_PUBLISH_PRIMARY = createUniqueKey(AskResponseEventPublishTable.askResponseEventPublish, "KEY_t_ask_response_event_publish_PRIMARY", AskResponseEventPublishTable.askResponseEventPublish.ID);
-        public static final UniqueKey<AskResponseEventPublishRecord> KEY_T_ASK_RESPONSE_EVENT_PUBLISH_UK_ASKRESP__PUBLISH_EVENTID = createUniqueKey(AskResponseEventPublishTable.askResponseEventPublish, "KEY_t_ask_response_event_publish_UK_ASKRESP__PUBLISH_EVENTID", AskResponseEventPublishTable.askResponseEventPublish.EVENTID);
-        public static final UniqueKey<EventProcessRecord> KEY_T_EVENT_PROCESS_PRIMARY = createUniqueKey(EventProcessTable.eventProcess, "KEY_t_event_process_PRIMARY", EventProcessTable.eventProcess.ID);
-        public static final UniqueKey<EventProcessRecord> KEY_T_EVENT_PROCESS_EVENTID = createUniqueKey(EventProcessTable.eventProcess, "KEY_t_event_process_eventId", EventProcessTable.eventProcess.EVENTID);
-        public static final UniqueKey<EventWatchRecord> KEY_T_EVENT_WATCH_PRIMARY = createUniqueKey(EventWatchTable.eventWatch, "KEY_t_event_watch_PRIMARY", EventWatchTable.eventWatch.ID);
-        public static final UniqueKey<EventWatchProcessRecord> KEY_T_EVENT_WATCH_PROCESS_PRIMARY = createUniqueKey(EventWatchProcessTable.eventWatchProcess, "KEY_t_event_watch_process_PRIMARY", EventWatchProcessTable.eventWatchProcess.ID);
-        public static final UniqueKey<NotifyEventPublishRecord> KEY_T_NOTIFY_EVENT_PUBLISH_PRIMARY = createUniqueKey(NotifyEventPublishTable.notifyEventPublish, "KEY_t_notify_event_publish_PRIMARY", NotifyEventPublishTable.notifyEventPublish.ID);
-        public static final UniqueKey<NotifyEventPublishRecord> KEY_T_NOTIFY_EVENT_PUBLISH_UK_NOTIFY__PUBLISH_EVENTID = createUniqueKey(NotifyEventPublishTable.notifyEventPublish, "KEY_t_notify_event_publish_UK_NOTIFY__PUBLISH_EVENTID", NotifyEventPublishTable.notifyEventPublish.EVENTID);
-        public static final UniqueKey<RevokeAskEventPublishRecord> KEY_T_REVOKE_ASK_EVENT_PUBLISH_PRIMARY = createUniqueKey(RevokeAskEventPublishTable.revokeAskEventPublish, "KEY_t_revoke_ask_event_publish_PRIMARY", RevokeAskEventPublishTable.revokeAskEventPublish.ID);
-        public static final UniqueKey<RevokeAskEventPublishRecord> KEY_T_REVOKE_ASK_EVENT_PUBLISH_UK_REVOKEASK__PUBLISH_EVENTID = createUniqueKey(RevokeAskEventPublishTable.revokeAskEventPublish, "KEY_t_revoke_ask_event_publish_UK_REVOKEASK__PUBLISH_EVENTID", RevokeAskEventPublishTable.revokeAskEventPublish.EVENTID);
+        public static final UniqueKey<AskResponseEventPublishRecord> KEY_T_ASK_RESPONSE_EVENT_PUBLISH_PRIMARY = createUniqueKey(AskResponseEventPublishTable.ASK_RESPONSE_EVENT_PUBLISH, "KEY_t_ask_response_event_publish_PRIMARY", AskResponseEventPublishTable.ASK_RESPONSE_EVENT_PUBLISH.ID);
+        public static final UniqueKey<AskResponseEventPublishRecord> KEY_T_ASK_RESPONSE_EVENT_PUBLISH_UK_ASKRESP__PUBLISH_EVENTID = createUniqueKey(AskResponseEventPublishTable.ASK_RESPONSE_EVENT_PUBLISH, "KEY_t_ask_response_event_publish_UK_ASKRESP__PUBLISH_EVENTID", AskResponseEventPublishTable.ASK_RESPONSE_EVENT_PUBLISH.EVENTID);
+        public static final UniqueKey<EventProcessRecord> KEY_T_EVENT_PROCESS_PRIMARY = createUniqueKey(EventProcessTable.EVENT_PROCESS, "KEY_t_event_process_PRIMARY", EventProcessTable.EVENT_PROCESS.ID);
+        public static final UniqueKey<EventProcessRecord> KEY_T_EVENT_PROCESS_EVENTID = createUniqueKey(EventProcessTable.EVENT_PROCESS, "KEY_t_event_process_eventId", EventProcessTable.EVENT_PROCESS.EVENTID);
+        public static final UniqueKey<EventWatchRecord> KEY_T_EVENT_WATCH_PRIMARY = createUniqueKey(EventWatchTable.EVENT_WATCH, "KEY_t_event_watch_PRIMARY", EventWatchTable.EVENT_WATCH.ID);
+        public static final UniqueKey<EventWatchProcessRecord> KEY_T_EVENT_WATCH_PROCESS_PRIMARY = createUniqueKey(EventWatchProcessTable.EVENT_WATCH_PROCESS, "KEY_t_event_watch_process_PRIMARY", EventWatchProcessTable.EVENT_WATCH_PROCESS.ID);
+        public static final UniqueKey<NotifyEventPublishRecord> KEY_T_NOTIFY_EVENT_PUBLISH_PRIMARY = createUniqueKey(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH, "KEY_t_notify_event_publish_PRIMARY", NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH.ID);
+        public static final UniqueKey<NotifyEventPublishRecord> KEY_T_NOTIFY_EVENT_PUBLISH_UK_NOTIFY__PUBLISH_EVENTID = createUniqueKey(NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH, "KEY_t_notify_event_publish_UK_NOTIFY__PUBLISH_EVENTID", NotifyEventPublishTable.NOTIFY_EVENT_PUBLISH.EVENTID);
+        public static final UniqueKey<RevokeAskEventPublishRecord> KEY_T_REVOKE_ASK_EVENT_PUBLISH_PRIMARY = createUniqueKey(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH, "KEY_t_revoke_ask_event_publish_PRIMARY", RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.ID);
+        public static final UniqueKey<RevokeAskEventPublishRecord> KEY_T_REVOKE_ASK_EVENT_PUBLISH_UK_REVOKEASK__PUBLISH_EVENTID = createUniqueKey(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH, "KEY_t_revoke_ask_event_publish_UK_REVOKEASK__PUBLISH_EVENTID", RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.EVENTID);
     }
 }
