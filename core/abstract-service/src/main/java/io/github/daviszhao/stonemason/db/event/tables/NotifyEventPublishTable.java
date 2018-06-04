@@ -130,4 +130,14 @@ public class NotifyEventPublishTable extends TableImpl<NotifyEventPublishRecord>
     public NotifyEventPublishTable rename(String name) {
         return new NotifyEventPublishTable(name, null);
     }
+
+    @Override
+    public TableField<NotifyEventPublishRecord, ?> getRecordVersion() {
+        return VERSION;
+    }
+
+    @Override
+    public TableField<NotifyEventPublishRecord, ?> getRecordTimestamp() {
+        return UPDATETIME;
+    }
 }

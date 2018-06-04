@@ -97,7 +97,10 @@ task jooq {
             .withEmptyCatalogs(true).withEmptySchemas(true)
             .withPojosEqualsAndHashCode(true).withSpringAnnotations(true).withRoutines(false)
     )
-            .withDatabase(new Database().withInputSchema(DBNAME).withName('org.jooq.util.mysql.MySQLDatabase').withRecordVersionFields('VERSION').withExcludes('t_user'))
+            .withDatabase(new Database().withInputSchema(DBNAME).withName('org.jooq.util.mysql.MySQLDatabase')
+            .withRecordVersionFields('version')
+            .withRecordTimestampFields('updateTime')
+            .withExcludes('t_user'))
             .withTarget(new Target().withDirectory('generated/main/java').withPackageName('io.github.daviszhao.stonemason.db.event').withEncoding('UTF-8'))
             .withStrategy(new Strategy()
             .withMatchers(new Matchers().withTables([

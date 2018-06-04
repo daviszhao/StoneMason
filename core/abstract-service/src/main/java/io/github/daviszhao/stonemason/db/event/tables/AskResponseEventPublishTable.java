@@ -138,4 +138,14 @@ public class AskResponseEventPublishTable extends TableImpl<AskResponseEventPubl
     public AskResponseEventPublishTable rename(String name) {
         return new AskResponseEventPublishTable(name, null);
     }
+
+    @Override
+    public TableField<AskResponseEventPublishRecord, ?> getRecordVersion() {
+        return VERSION;
+    }
+
+    @Override
+    public TableField<AskResponseEventPublishRecord, ?> getRecordTimestamp() {
+        return UPDATETIME;
+    }
 }

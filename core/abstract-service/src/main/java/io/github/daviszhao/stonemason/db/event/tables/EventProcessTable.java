@@ -133,4 +133,14 @@ public class EventProcessTable extends TableImpl<EventProcessRecord> {
     public EventProcessTable rename(String name) {
         return new EventProcessTable(name, null);
     }
+
+    @Override
+    public TableField<EventProcessRecord, ?> getRecordVersion() {
+        return VERSION;
+    }
+
+    @Override
+    public TableField<EventProcessRecord, ?> getRecordTimestamp() {
+        return UPDATETIME;
+    }
 }

@@ -134,4 +134,14 @@ public class RevokeAskEventPublishTable extends TableImpl<RevokeAskEventPublishR
     public RevokeAskEventPublishTable rename(String name) {
         return new RevokeAskEventPublishTable(name, null);
     }
+
+    @Override
+    public TableField<RevokeAskEventPublishRecord, ?> getRecordVersion() {
+        return VERSION;
+    }
+
+    @Override
+    public TableField<RevokeAskEventPublishRecord, ?> getRecordTimestamp() {
+        return UPDATETIME;
+    }
 }

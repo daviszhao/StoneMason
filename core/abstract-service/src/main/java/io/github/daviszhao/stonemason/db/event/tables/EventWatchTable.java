@@ -141,4 +141,14 @@ public class EventWatchTable extends TableImpl<EventWatchRecord> {
     public EventWatchTable rename(String name) {
         return new EventWatchTable(name, null);
     }
+
+    @Override
+    public TableField<EventWatchRecord, ?> getRecordVersion() {
+        return VERSION;
+    }
+
+    @Override
+    public TableField<EventWatchRecord, ?> getRecordTimestamp() {
+        return UPDATETIME;
+    }
 }
