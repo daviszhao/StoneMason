@@ -87,7 +87,7 @@ public class EventProcessTable extends TableImpl<EventProcessRecord> {
     }
 
     /**
-     * The class holding records for this type
+     * The class holding records for this eventType
      */
     @Override
     public Class<EventProcessRecord> getRecordType() {

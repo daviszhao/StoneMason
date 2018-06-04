@@ -6,8 +6,6 @@ package io.github.daviszhao.stonemason.db.event.tables;
 
 import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
-import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
-import io.github.daviszhao.stonemason.db.base.utils.JsonObjectsConverter;
 import io.github.daviszhao.stonemason.db.event.Keys;
 import io.github.daviszhao.stonemason.db.event.tables.records.AskRequstEventPublishRecord;
 import org.jooq.*;
@@ -44,7 +42,7 @@ public class AskRequstEventPublishTable extends TableImpl<AskRequstEventPublishR
     /**
      * The column <code>user.t_ask_requst_event_publish.payload</code>.
      */
-    public final TableField<AskRequstEventPublishRecord, EventPayload> PAYLOAD = createField("payload", org.jooq.impl.SQLDataType.CLOB, this, "", new JsonObjectsConverter<>(EventPayload.class));
+    public final TableField<AskRequstEventPublishRecord, String> PAYLOAD = createField("payload", org.jooq.impl.SQLDataType.CLOB, this, "");
     /**
      * The column <code>user.t_ask_requst_event_publish.status</code>. 'NEW','PROCESSED','IGNORE'
      */
@@ -95,7 +93,7 @@ public class AskRequstEventPublishTable extends TableImpl<AskRequstEventPublishR
     }
 
     /**
-     * The class holding records for this type
+     * The class holding records for this eventType
      */
     @Override
     public Class<AskRequstEventPublishRecord> getRecordType() {

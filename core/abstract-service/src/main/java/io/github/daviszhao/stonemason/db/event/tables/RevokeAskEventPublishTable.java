@@ -5,8 +5,6 @@ package io.github.daviszhao.stonemason.db.event.tables;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
-import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
-import io.github.daviszhao.stonemason.db.base.utils.JsonObjectsConverter;
 import io.github.daviszhao.stonemason.db.event.Keys;
 import io.github.daviszhao.stonemason.db.event.tables.records.RevokeAskEventPublishRecord;
 import org.jooq.*;
@@ -43,7 +41,7 @@ public class RevokeAskEventPublishTable extends TableImpl<RevokeAskEventPublishR
     /**
      * The column <code>user.t_revoke_ask_event_publish.payload</code>.
      */
-    public final TableField<RevokeAskEventPublishRecord, EventPayload> PAYLOAD = createField("payload", org.jooq.impl.SQLDataType.CLOB, this, "", new JsonObjectsConverter<>(EventPayload.class));
+    public final TableField<RevokeAskEventPublishRecord, String> PAYLOAD = createField("payload", org.jooq.impl.SQLDataType.CLOB, this, "");
     /**
      * The column <code>user.t_revoke_ask_event_publish.status</code>. 'NEW','PROCESSED','IGNORE'
      */
@@ -90,7 +88,7 @@ public class RevokeAskEventPublishTable extends TableImpl<RevokeAskEventPublishR
     }
 
     /**
-     * The class holding records for this type
+     * The class holding records for this eventType
      */
     @Override
     public Class<RevokeAskEventPublishRecord> getRecordType() {

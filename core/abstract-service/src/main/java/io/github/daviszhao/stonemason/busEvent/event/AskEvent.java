@@ -8,7 +8,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class AskEvent extends AbstractBusEvent {
-    private String id;
 
 
     @Override

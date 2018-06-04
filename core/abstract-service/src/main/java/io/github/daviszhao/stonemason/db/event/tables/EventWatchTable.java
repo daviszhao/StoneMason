@@ -95,7 +95,7 @@ public class EventWatchTable extends TableImpl<EventWatchRecord> {
     }
 
     /**
-     * The class holding records for this type
+     * The class holding records for this eventType
      */
     @Override
     public Class<EventWatchRecord> getRecordType() {

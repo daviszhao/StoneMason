@@ -3,7 +3,10 @@ package io.github.daviszhao.stonemason.models.event;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.EventCategory;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
@@ -22,7 +25,6 @@ import javax.validation.constraints.Size;
 @Getter
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode(callSuper = false)
 public class RevokeAskEventPublish extends AbstractEventPublish {
 
     private static final long serialVersionUID = -327625858;
@@ -46,4 +48,5 @@ public class RevokeAskEventPublish extends AbstractEventPublish {
     public EventCategory getEventCategory() {
         return EventCategory.REVOKE;
     }
+
 }

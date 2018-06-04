@@ -3,7 +3,6 @@ package io.github.daviszhao.stonemason.db.event.tables.daos;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
-import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
 import io.github.daviszhao.stonemason.db.base.daos.AbstractDao;
 import io.github.daviszhao.stonemason.db.event.tables.RevokeAskEventPublishTable;
 import io.github.daviszhao.stonemason.db.event.tables.records.RevokeAskEventPublishRecord;
@@ -67,7 +66,7 @@ public class RevokeAskEventPublishDao extends AbstractDao<RevokeAskEventPublishR
     /**
      * Fetch records that have <code>payload IN (values)</code>
      */
-    public List<RevokeAskEventPublish> fetchByPayload(EventPayload... values) {
+    public List<RevokeAskEventPublish> fetchByPayload(String... values) {
         return fetch(RevokeAskEventPublishTable.REVOKE_ASK_EVENT_PUBLISH.PAYLOAD, values);
     }
 

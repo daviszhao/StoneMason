@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 @lombok.Setter
 @lombok.Getter
-public class BankInfo implements Serializable {
+class BankInfo implements Serializable {
     private String bankCode, bankName;
 
 }

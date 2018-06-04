@@ -1,9 +1,6 @@
 spring:
      application:
       name: user-service
-     devtools:
-       livereload:
-         port: 4321
      cloud:
        config:
          discovery:
@@ -23,4 +20,8 @@ logging:
   level:
     root: error
     io.github.daviszhao: debug
-    org.jooq: debug
+    org.springframework.cloud.bus: debug
+management:
+  security:
+    enabled: false
+#    org.jooq: debug

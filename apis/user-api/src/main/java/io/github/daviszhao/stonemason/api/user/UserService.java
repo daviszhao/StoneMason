@@ -37,13 +37,13 @@ public interface UserService {
 
     @ApiOperation("用户注册")
     @RequestMapping(value = "/create", method = POST)
-    public void create(@ApiParam(value = "用户名", required = true) @RequestParam("userName") String userName,
-                       @ApiParam(value = "密码明文", required = true) @RequestParam("password") String password);
+    void create(@ApiParam(value = "用户名", required = true) @RequestParam("userName") String userName,
+                @ApiParam(value = "密码明文", required = true) @RequestParam("password") String password);
 
     @ApiOperation("修改密码")
-    @RequestMapping(value = "/changePassword", method = {PUT, PATCH})
-    public void changePassword(@ApiParam(value = "用户名", required = true) @RequestParam("userName") String userName,
-                               @ApiParam(value = "密码明文", required = true) @RequestParam("password") String password);
+    @RequestMapping(value = "/changePassword", method = {PUT})
+    void changePassword(@ApiParam(value = "用户名", required = true) @RequestParam("userName") String userName,
+                        @ApiParam(value = "密码明文", required = true) @RequestParam("password") String password);
 
     @ApiOperation("按用户名获取用户")
     @RequestMapping(value = "/userByName", method = {GET})

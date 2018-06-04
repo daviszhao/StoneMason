@@ -156,7 +156,7 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     }
 
     // -------------------------------------------------------------------------
-    // Record7 type implementation
+    // Record7 eventType implementation
     // -------------------------------------------------------------------------
 
     /**

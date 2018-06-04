@@ -1,14 +1,14 @@
 spring:
      application:
       name: order-service
-     devtools:
-       livereload:
-         port: 4321
      cloud:
        config:
          discovery:
            enabled: true
            service-id: config-service
+       bus:
+         trace:
+           enabled: true
 eureka:
   client:
     service-url:
@@ -24,3 +24,7 @@ logging:
     root: error
     io.github.daviszhao: debug
 #    org.jooq: debug
+    org.springframework.context.event: debug
+management:
+  security:
+    enabled: false

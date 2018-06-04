@@ -1,37 +1,22 @@
-package io.github.daviszhao.stonemason.busEvent.services.old;
+package io.github.daviszhao.stonemason.busEvent.services.utils;
 
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import io.github.daviszhao.stonemason.busEvent.base.AbstractBusEvent;
-import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
-import io.github.daviszhao.stonemason.busEvent.payloads.FailureReason;
-import io.github.daviszhao.stonemason.exceptions.event.EventException;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import lombok.AllArgsConstructor;
 
+import javax.inject.Named;
 import java.io.IOException;
 
-public class EventUtils implements ApplicationContextAware {
+@Named
+@AllArgsConstructor
+public class EventUtils {
 
     public static final String SUCCESS_CALLBACK_NAME = "onSuccess";
 
     public static final String FAILED_CALLBACK_NAME = "onFailure";
-    private static ObjectMapper objectMapper;
+    private ObjectMapper objectMapper;
 
-    /*   *//**
-     * 将事件转成json
-     * @param event
-     * @return
-     *//*
-    public static String serializeEvent(BaseEvent event) {
-        return JsonUtils.object2Json(event);
-    }
-
-    */
 
     /**
      * 将json转成事件对象
@@ -41,12 +26,29 @@ public class EventUtils implements ApplicationContextAware {
      * @param <T>
      * @return
      */
-    public static <T extends AbstractBusEvent> T deserializeEvent(String data, Class<T> clazz) {
+    public <T> T deserialize(String data, Class<T> clazz) {
         try {
             return objectMapper.readValue(data, clazz);
         } catch (IOException e) {
 
             throw new RuntimeException("数据转换错误,不是正常的JSON格式", e);
+        }
+    }
+
+    public <T> T deserialize(String data, final TypeReference<T> typeReference) {
+        try {
+            return objectMapper.readValue(data, typeReference);
+        } catch (IOException e) {
+
+            throw new RuntimeException("数据转换错误,不是正常的JSON格式", e);
+        }
+    }
+
+    public String serialize(Object payload) {
+        try {
+            return objectMapper.writeValueAsString(payload);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("数据转换错误,不能转成JSON格式", e);
         }
     }
 
@@ -78,7 +80,7 @@ public class EventUtils implements ApplicationContextAware {
     public static String getAskCallbackMethodName(boolean success) {
         return success ? SUCCESS_CALLBACK_NAME : FAILED_CALLBACK_NAME;
     }
-*/
+
     public static FailureReason fromAskEventStatus(AskEventStatus status) {
 
         switch (status) {
@@ -121,9 +123,9 @@ public class EventUtils implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        objectMapper = applicationContext.getBean(ObjectMapper.class)
+        objectMapper = applicationContext.getBean(ObjectMapper.class)/*
                 .configure(JsonParser.Feature.IGNORE_UNDEFINED, true)
                 .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
-                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-    }
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)*/;
+
 }

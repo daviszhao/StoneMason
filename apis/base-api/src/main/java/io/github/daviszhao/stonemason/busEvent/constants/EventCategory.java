@@ -10,7 +10,11 @@ public enum EventCategory {
 
     ASKRESP("响应事件");
 
-    private String desc;
+    private final String desc;
+
+    public String getDesc() {
+        return desc;
+    }
 
     EventCategory(String desc) {
         this.desc = desc;

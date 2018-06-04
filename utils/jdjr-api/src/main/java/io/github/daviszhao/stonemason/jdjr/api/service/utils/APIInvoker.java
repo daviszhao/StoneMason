@@ -4,11 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.daviszhao.stonemason.jdjr.api.models.base.*;
 import io.github.daviszhao.stonemason.jdjr.api.service.config.JDJRConfig;
 import io.github.daviszhao.stonemason.jdjr.api.service.impls.SecurityService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;
 
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -16,14 +16,11 @@ import java.util.UUID;
 
 @Named
 @Slf4j
-public class APIInvoker {
-    @Inject
+@AllArgsConstructor
+class APIInvoker {
     private JDJRConfig jdConfig;
-    @Inject
     private SecurityService securityService;
-    @Inject
     private ObjectMapper objectMapper;
-    @Inject
     private RestTemplateBuilder restTemplateBuilder;
 
     public <REQ extends CommonRequest<REQ>, RESP extends CommonResponse<RESP>> RESP invoke(REQ req, Class<RESP> respClass) throws Exception {

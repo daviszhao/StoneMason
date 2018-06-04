@@ -3,7 +3,10 @@ package io.github.daviszhao.stonemason.models.event;
 
 import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
 import io.github.daviszhao.stonemason.busEvent.constants.EventCategory;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.Size;
@@ -21,7 +24,6 @@ import javax.validation.constraints.Size;
 @Getter
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode(callSuper = false)
 @SuppressWarnings({"all", "unchecked", "rawtypes"})
 public class AskRequstEventPublish extends AbstractEventPublish {
 

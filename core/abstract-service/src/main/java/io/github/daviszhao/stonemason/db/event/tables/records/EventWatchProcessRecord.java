@@ -157,7 +157,7 @@ public class EventWatchProcessRecord extends UpdatableRecordImpl<EventWatchProce
     }
 
     // -------------------------------------------------------------------------
-    // Record7 type implementation
+    // Record7 eventType implementation
     // -------------------------------------------------------------------------
 
     /**

@@ -2,30 +2,32 @@ package io.github.daviszhao.stonemason.user.service;
 
 import io.github.daviszhao.stonemason.api.base.PageData;
 import io.github.daviszhao.stonemason.api.user.UserService;
-import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
 import io.github.daviszhao.stonemason.busEvent.services.EventService;
+import io.github.daviszhao.stonemason.busEvent.services.utils.EventUtils;
 import io.github.daviszhao.stonemason.db.user.tables.UserTable;
 import io.github.daviszhao.stonemason.db.user.tables.daos.UserDao;
 import io.github.daviszhao.stonemason.exceptions.user.UserExistExption;
 import io.github.daviszhao.stonemason.exceptions.user.UserStatusException;
 import io.github.daviszhao.stonemason.exceptions.user.UsetNotExistException;
 import io.github.daviszhao.stonemason.models.user.User;
+import lombok.AllArgsConstructor;
 import org.jooq.Condition;
 import org.jooq.SortField;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.inject.Inject;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.springframework.util.StringUtils.hasText;
 
 @RestController
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
-    @Inject
-    private UserDao userDao;
-    @Inject
+    private final UserDao userDao;
     private EventService eventService;
+    private EventUtils eventUtils;
 
     @Override
     public List<User> queryAllUsers(String keyword, Boolean locked) {
@@ -103,7 +105,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void testEvent() {
-        eventService.prepairNotifyEvent("event.user.test", new EventPayload().with("name", "daviszhao").with("time", LocalDateTime.now()));
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("name", "daviszhao");
+        payload.put("time", LocalDateTime.now());
+        eventService.prepairNotifyEvent("event.user.test", eventUtils.serialize(payload));
     }
 
 }

@@ -3,9 +3,11 @@ package io.github.daviszhao.stonemason.models.event;
 
 import io.github.daviszhao.stonemason.busEvent.constants.EventCategory;
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
-import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
 import io.github.daviszhao.stonemason.models.base.BaseModel;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
@@ -27,7 +29,6 @@ import static io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus.NE
 @Getter
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode(callSuper = false)
 public class EventProcess extends BaseModel {
 
     private static final long serialVersionUID = 2075324387;
@@ -35,7 +36,7 @@ public class EventProcess extends BaseModel {
     @NotNull
     private Integer id;
     @Size(max = 65535)
-    private EventPayload payload;
+    private String payload;
     @Size(max = 20)
     private ProcessStatus status;
     @NotNull
@@ -62,7 +63,7 @@ public class EventProcess extends BaseModel {
 
     }
 
-    public EventProcess(String type, EventCategory category, EventPayload payLoad, final String eventid) {
+    public EventProcess(String type, EventCategory category, String payload, final String eventid) {
         this.id = null;
         this.payload = payload;
         this.status = NEW;

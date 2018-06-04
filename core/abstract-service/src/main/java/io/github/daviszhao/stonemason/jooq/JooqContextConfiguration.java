@@ -51,7 +51,7 @@ import javax.sql.DataSource;
 @ConditionalOnBean(DataSource.class)
 @AutoConfigureAfter({DataSourceAutoConfiguration.class,
         TransactionAutoConfiguration.class})
-public class JooqContextConfiguration {
+class JooqContextConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(DataSourceConnectionProvider.class)
@@ -76,7 +76,7 @@ public class JooqContextConfiguration {
     //    @Configuration
     @ConditionalOnMissingBean(DSLContext.class)
     @EnableConfigurationProperties(JooqProperties.class)
-    public static class DslContextConfiguration {
+    static class DslContextConfiguration {
 
         private final JooqProperties properties;
 

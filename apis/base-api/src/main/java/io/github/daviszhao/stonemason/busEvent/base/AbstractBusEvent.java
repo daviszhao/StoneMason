@@ -1,28 +1,26 @@
 package io.github.daviszhao.stonemason.busEvent.base;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.daviszhao.stonemason.busEvent.constants.EventCategory;
-import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.cloud.bus.event.RemoteApplicationEvent;
 
-import java.util.UUID;
-
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public abstract class AbstractBusEvent extends RemoteApplicationEvent {
-    private EventPayload payLoad;
-    private String id;
-    private String type;
+    private String payLoad;
+    private String eventType;
 
-    protected static String generateEventID() {
-        return UUID.randomUUID().toString();
+    protected AbstractBusEvent(final Object source, final String originService, String payload, String eventtype) {
+        super(source, originService);
+        this.payLoad = payload;
+        this.eventType = eventtype;
     }
 
+    @JsonIgnore
     public abstract EventCategory getCategory();
 
 }

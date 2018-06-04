@@ -3,7 +3,10 @@ package io.github.daviszhao.stonemason.models.event;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.EventCategory;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.annotation.Generated;
 
@@ -20,7 +23,6 @@ import javax.annotation.Generated;
 @Getter
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode(callSuper = false)
 public class AskResponseEventPublish extends AbstractEventPublish {
 
     private static final long serialVersionUID = -1513668439;
@@ -47,4 +49,5 @@ public class AskResponseEventPublish extends AbstractEventPublish {
     public EventCategory getEventCategory() {
         return EventCategory.ASKRESP;
     }
+
 }

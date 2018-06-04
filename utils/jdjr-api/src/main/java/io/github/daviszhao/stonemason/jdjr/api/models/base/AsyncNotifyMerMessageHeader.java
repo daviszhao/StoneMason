@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 @Setter
 @Getter
-public class AsyncNotifyMerMessageHeader implements Serializable {
+class AsyncNotifyMerMessageHeader implements Serializable {
     public static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
     private String messageType;//10

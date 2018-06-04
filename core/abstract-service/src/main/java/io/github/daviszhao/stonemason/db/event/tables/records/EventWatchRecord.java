@@ -202,7 +202,7 @@ public class EventWatchRecord extends UpdatableRecordImpl<EventWatchRecord> impl
     }
 
     // -------------------------------------------------------------------------
-    // Record10 type implementation
+    // Record10 eventType implementation
     // -------------------------------------------------------------------------
 
     /**

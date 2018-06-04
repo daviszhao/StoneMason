@@ -4,7 +4,10 @@ package io.github.daviszhao.stonemason.models.event;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
 import io.github.daviszhao.stonemason.models.base.BaseModel;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
@@ -28,7 +31,6 @@ import static java.util.stream.Collectors.joining;
 @Getter
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode(callSuper = false)
 public class EventWatch extends BaseModel {
 
     private static final long serialVersionUID = -1063085806;

@@ -8,11 +8,12 @@ import org.jooq.impl.AbstractConverter;
 import java.io.IOException;
 import java.io.Serializable;
 
-public class JsonObjectsConverter<INFO extends Serializable> extends AbstractConverter<String, INFO> {
-    private static ObjectMapper objectMapper;
-    private final Class<INFO> targetClass;
+import static org.springframework.util.StringUtils.hasText;
 
-    public JsonObjectsConverter(Class<INFO> infoClass) {
+public class JsonObjectsConverter<T extends Serializable> extends AbstractConverter<String, T> {
+    private final Class<T> targetClass;
+
+    public JsonObjectsConverter(Class<T> infoClass) {
         super(String.class, infoClass);
         this.targetClass = infoClass;
     }
@@ -22,7 +23,8 @@ public class JsonObjectsConverter<INFO extends Serializable> extends AbstractCon
     }
 
     @Override
-    public INFO from(String databaseObject) {
+    public T from(String databaseObject) {
+        if (!hasText(databaseObject) || "{}".equals(databaseObject)) return null;
         try {
             return getObjectMapper().readValue(databaseObject, targetClass);
         } catch (IOException e) {
@@ -32,7 +34,8 @@ public class JsonObjectsConverter<INFO extends Serializable> extends AbstractCon
     }
 
     @Override
-    public String to(INFO userObject) {
+    public String to(T userObject) {
+        if (userObject == null) return "{}";
         try {
             return getObjectMapper().writeValueAsString(userObject);
         } catch (JsonProcessingException e) {

@@ -81,7 +81,7 @@ public class EventWatchProcessTable extends TableImpl<EventWatchProcessRecord> {
     }
 
     /**
-     * The class holding records for this type
+     * The class holding records for this eventType
      */
     @Override
     public Class<EventWatchProcessRecord> getRecordType() {

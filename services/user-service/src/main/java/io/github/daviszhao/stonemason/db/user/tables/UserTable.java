@@ -83,7 +83,7 @@ public class UserTable extends TableImpl<UserRecord> {
     }
 
     /**
-     * The class holding records for this type
+     * The class holding records for this eventType
      */
     @Override
     public Class<UserRecord> getRecordType() {

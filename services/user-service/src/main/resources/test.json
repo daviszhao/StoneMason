@@ -1,0 +1,254 @@
+[
+  {
+    "timestamp": 1527848844619,
+    "info": {
+      "method": "GET",
+      "path": "/favicon.ico",
+      "headers": {
+        "request": {
+          "host": "localhost:3456",
+          "connection": "keep-alive",
+          "pragma": "no-cache",
+          "cache-control": "no-cache",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36",
+          "accept": "image/webp,image/apng,image/*,*/*;q=0.8",
+          "referer": "http://localhost:3456/trace",
+          "accept-encoding": "gzip, deflate, br",
+          "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+          "cookie": "JSESSIONID=B3CA1F6407041E1C1564AD527D0D0493; m=2258:Z3Vlc3Q6Z3Vlc3Q%253D"
+        },
+        "response": {
+          "X-Application-Context": "user-service:dev:3456",
+          "Last-Modified": "Tue, 03 Apr 2018 02:40:42 GMT",
+          "Accept-Ranges": "bytes",
+          "Content-Type": "image/x-icon",
+          "Content-Length": "946",
+          "Date": "Fri, 01 Jun 2018 10:27:24 GMT",
+          "status": "200"
+        }
+      },
+      "timeTaken": "11"
+    }
+  },
+  {
+    "timestamp": 1527848844332,
+    "info": {
+      "method": "GET",
+      "path": "/trace",
+      "headers": {
+        "request": {
+          "host": "localhost:3456",
+          "connection": "keep-alive",
+          "cache-control": "max-age=0",
+          "upgrade-insecure-requests": "1",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+          "accept-encoding": "gzip, deflate, br",
+          "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+          "cookie": "JSESSIONID=B3CA1F6407041E1C1564AD527D0D0493; m=2258:Z3Vlc3Q6Z3Vlc3Q%253D"
+        },
+        "response": {
+          "X-Application-Context": "user-service:dev:3456",
+          "Content-Type": "application/vnd.spring-boot.actuator.v1+json;charset=UTF-8",
+          "Transfer-Encoding": "chunked",
+          "Date": "Fri, 01 Jun 2018 10:27:24 GMT",
+          "status": "200"
+        }
+      },
+      "timeTaken": "5"
+    }
+  },
+  {
+    "timestamp": 1527848829833,
+    "info": {
+      "method": "GET",
+      "path": "/testEvent",
+      "headers": {
+        "request": {
+          "host": "localhost:3456",
+          "connection": "keep-alive",
+          "upgrade-insecure-requests": "1",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+          "accept-encoding": "gzip, deflate, br",
+          "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+          "cookie": "JSESSIONID=B3CA1F6407041E1C1564AD527D0D0493; m=2258:Z3Vlc3Q6Z3Vlc3Q%253D"
+        },
+        "response": {
+          "X-Application-Context": "user-service:dev:3456",
+          "status": "200"
+        }
+      },
+      "timeTaken": "57"
+    }
+  },
+  {
+    "timestamp": 1527848811785,
+    "info": {
+      "method": "GET",
+      "path": "/trace",
+      "headers": {
+        "request": {
+          "host": "localhost:3456",
+          "connection": "keep-alive",
+          "upgrade-insecure-requests": "1",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+          "accept-encoding": "gzip, deflate, br",
+          "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+          "cookie": "JSESSIONID=B3CA1F6407041E1C1564AD527D0D0493; m=2258:Z3Vlc3Q6Z3Vlc3Q%253D"
+        },
+        "response": {
+          "X-Application-Context": "user-service:dev:3456",
+          "Content-Type": "application/vnd.spring-boot.actuator.v1+json;charset=UTF-8",
+          "Transfer-Encoding": "chunked",
+          "Date": "Fri, 01 Jun 2018 10:26:51 GMT",
+          "status": "200"
+        }
+      },
+      "timeTaken": "4"
+    }
+  },
+  {
+    "timestamp": 1527848796416,
+    "info": {
+      "method": "GET",
+      "path": "/favicon.ico",
+      "headers": {
+        "request": {
+          "host": "localhost:3456",
+          "connection": "keep-alive",
+          "pragma": "no-cache",
+          "cache-control": "no-cache",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36",
+          "accept": "image/webp,image/apng,image/*,*/*;q=0.8",
+          "referer": "http://localhost:3456/trace.json",
+          "accept-encoding": "gzip, deflate, br",
+          "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+          "cookie": "JSESSIONID=B3CA1F6407041E1C1564AD527D0D0493; m=2258:Z3Vlc3Q6Z3Vlc3Q%253D"
+        },
+        "response": {
+          "X-Application-Context": "user-service:dev:3456",
+          "Last-Modified": "Tue, 03 Apr 2018 02:40:42 GMT",
+          "Accept-Ranges": "bytes",
+          "Content-Type": "image/x-icon",
+          "Content-Length": "946",
+          "Date": "Fri, 01 Jun 2018 10:26:36 GMT",
+          "status": "200"
+        }
+      },
+      "timeTaken": "8"
+    }
+  },
+  {
+    "timestamp": 1527848796191,
+    "info": {
+      "method": "GET",
+      "path": "/trace.json",
+      "headers": {
+        "request": {
+          "host": "localhost:3456",
+          "connection": "keep-alive",
+          "cache-control": "max-age=0",
+          "upgrade-insecure-requests": "1",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+          "accept-encoding": "gzip, deflate, br",
+          "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+          "cookie": "JSESSIONID=B3CA1F6407041E1C1564AD527D0D0493; m=2258:Z3Vlc3Q6Z3Vlc3Q%253D"
+        },
+        "response": {
+          "X-Application-Context": "user-service:dev:3456",
+          "Content-Type": "application/vnd.spring-boot.actuator.v1+json;charset=UTF-8",
+          "Transfer-Encoding": "chunked",
+          "Date": "Fri, 01 Jun 2018 10:26:36 GMT",
+          "status": "200"
+        }
+      },
+      "timeTaken": "9"
+    }
+  },
+  {
+    "timestamp": 1527848795097,
+    "info": {
+      "method": "GET",
+      "path": "/testEvent",
+      "headers": {
+        "request": {
+          "host": "localhost:3456",
+          "connection": "keep-alive",
+          "accept": "*/*",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36",
+          "referer": "http://localhost:3456/swagger-ui.html",
+          "accept-encoding": "gzip, deflate, br",
+          "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+          "cookie": "JSESSIONID=B3CA1F6407041E1C1564AD527D0D0493; m=2258:Z3Vlc3Q6Z3Vlc3Q%253D"
+        },
+        "response": {
+          "X-Application-Context": "user-service:dev:3456",
+          "status": "200"
+        }
+      },
+      "timeTaken": "130"
+    }
+  },
+  {
+    "timestamp": 1527848785008,
+    "info": {
+      "method": "GET",
+      "path": "/favicon.ico",
+      "headers": {
+        "request": {
+          "host": "localhost:3456",
+          "connection": "keep-alive",
+          "pragma": "no-cache",
+          "cache-control": "no-cache",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36",
+          "accept": "image/webp,image/apng,image/*,*/*;q=0.8",
+          "referer": "http://localhost:3456/trace.json",
+          "accept-encoding": "gzip, deflate, br",
+          "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+          "cookie": "JSESSIONID=B3CA1F6407041E1C1564AD527D0D0493; m=2258:Z3Vlc3Q6Z3Vlc3Q%253D"
+        },
+        "response": {
+          "X-Application-Context": "user-service:dev:3456",
+          "Last-Modified": "Tue, 03 Apr 2018 02:40:42 GMT",
+          "Accept-Ranges": "bytes",
+          "Content-Type": "image/x-icon",
+          "Content-Length": "946",
+          "Date": "Fri, 01 Jun 2018 10:26:24 GMT",
+          "status": "200"
+        }
+      },
+      "timeTaken": "37"
+    }
+  },
+  {
+    "timestamp": 1527848784755,
+    "info": {
+      "method": "GET",
+      "path": "/trace.json",
+      "headers": {
+        "request": {
+          "host": "localhost:3456",
+          "connection": "keep-alive",
+          "cache-control": "max-age=0",
+          "upgrade-insecure-requests": "1",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36",
+          "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+          "accept-encoding": "gzip, deflate, br",
+          "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+          "cookie": "JSESSIONID=B3CA1F6407041E1C1564AD527D0D0493; m=2258:Z3Vlc3Q6Z3Vlc3Q%253D"
+        },
+        "response": {
+          "X-Application-Context": "user-service:dev:3456",
+          "Content-Type": "application/vnd.spring-boot.actuator.v1+json;charset=UTF-8",
+          "Transfer-Encoding": "chunked",
+          "Date": "Fri, 01 Jun 2018 10:26:24 GMT",
+          "status": "200"
+        }
+      },
+      "timeTaken": "82"
+    }
+  }
+]

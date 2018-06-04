@@ -6,13 +6,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.daviszhao.stonemason.utils.xinnet_api.config.XinnetAPIConfig;
 import io.github.daviszhao.stonemason.utils.xinnet_api.vo.AgentInfoFromAPI;
 import io.github.daviszhao.stonemason.utils.xinnet_api.vo.GoodsDetail;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.IOException;
 import java.util.Comparator;
@@ -24,22 +25,29 @@ import java.util.stream.Collectors;
 import static org.springframework.util.StringUtils.hasText;
 
 @Slf4j
+@NoArgsConstructor
 @Named
+@AllArgsConstructor
 public class XinnetAPI {
-    public static final String WEIXINPAY = "weixinpay";
-    public static final String ALIPAY = "alipay";
     public static final String TIMEUNIT_C = "C";
     public static final String TIMEUNIT_Y = "Y";
     public static final String TIMEUNIT_M = "M";
-    @Inject
+    private static final String WEIXINPAY = "weixinpay";
+    private static final String ALIPAY = "alipay";
     private RestTemplate restTemplate;
     @Value("${spring.profiles.active:default}")
     private String profile;
-    @Inject
+
     private ObjectMapper objectMapper;
-    @Inject
+
     private XinnetAPIConfig apiConfig;
 
+
+    public XinnetAPI(RestTemplate restTemplate, ObjectMapper objectMapper, XinnetAPIConfig apiConfig) {
+        this.restTemplate = restTemplate;
+        this.objectMapper = objectMapper;
+        this.apiConfig = apiConfig;
+    }
 
     /**
      * 根据agentcode获取会员信息

@@ -188,7 +188,7 @@ public class EventProcessRecord extends UpdatableRecordImpl<EventProcessRecord> 
     }
 
     // -------------------------------------------------------------------------
-    // Record9 type implementation
+    // Record9 eventType implementation
     // -------------------------------------------------------------------------
 
     /**

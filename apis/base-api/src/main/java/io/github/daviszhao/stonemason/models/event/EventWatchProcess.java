@@ -4,7 +4,10 @@ package io.github.daviszhao.stonemason.models.event;
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
 import io.github.daviszhao.stonemason.busEvent.payloads.FailureInfo;
 import io.github.daviszhao.stonemason.models.base.BaseModel;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.NotNull;
@@ -24,7 +27,6 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode(callSuper = false)
 public class EventWatchProcess extends BaseModel {
 
     private static final long serialVersionUID = -947228475;

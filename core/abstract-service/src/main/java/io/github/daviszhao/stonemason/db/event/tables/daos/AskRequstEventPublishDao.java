@@ -3,7 +3,6 @@ package io.github.daviszhao.stonemason.db.event.tables.daos;
 
 import io.github.daviszhao.stonemason.busEvent.constants.AskEventStatus;
 import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
-import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
 import io.github.daviszhao.stonemason.db.base.daos.AbstractDao;
 import io.github.daviszhao.stonemason.db.event.tables.AskRequstEventPublishTable;
 import io.github.daviszhao.stonemason.db.event.tables.records.AskRequstEventPublishRecord;
@@ -68,7 +67,7 @@ public class AskRequstEventPublishDao extends AbstractDao<AskRequstEventPublishR
     /**
      * Fetch records that have <code>payload IN (values)</code>
      */
-    public List<AskRequstEventPublish> fetchByPayload(EventPayload... values) {
+    public List<AskRequstEventPublish> fetchByPayload(String... values) {
         return fetch(AskRequstEventPublishTable.askRequstEventPublish.PAYLOAD, values);
     }
 

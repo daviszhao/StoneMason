@@ -1,7 +1,7 @@
 package io.github.daviszhao.stonemason.exceptions.event;
 
 
-public class EventException extends RuntimeException {
+class EventException extends RuntimeException {
 
     public EventException(String message) {
         super(message);

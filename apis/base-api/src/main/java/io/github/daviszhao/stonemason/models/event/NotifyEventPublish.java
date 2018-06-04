@@ -2,15 +2,11 @@ package io.github.daviszhao.stonemason.models.event;
 
 
 import io.github.daviszhao.stonemason.busEvent.constants.EventCategory;
-import io.github.daviszhao.stonemason.busEvent.constants.ProcessStatus;
-import io.github.daviszhao.stonemason.busEvent.payloads.EventPayload;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.annotation.Generated;
-import java.time.LocalDateTime;
 
 
 @Generated(
@@ -24,8 +20,6 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
-//@ToString
-@EqualsAndHashCode(callSuper = false)
 public class NotifyEventPublish extends AbstractEventPublish {
 
     private static final long serialVersionUID = 700733040;
@@ -42,12 +36,9 @@ public class NotifyEventPublish extends AbstractEventPublish {
         this.setUpdateTime(value.getUpdateTime());
     }
 
-    public NotifyEventPublish(String type, EventPayload payload) {
-        super(null, payload, ProcessStatus.NEW, null, type, LocalDateTime.now(), null);
-    }
-
     @Override
     public EventCategory getEventCategory() {
         return EventCategory.NOTIFY;
     }
+
 }

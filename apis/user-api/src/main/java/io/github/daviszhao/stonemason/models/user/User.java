@@ -31,7 +31,6 @@ import static org.apache.commons.codec.digest.DigestUtils.md5Hex;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode(callSuper = false)
 public class User extends BaseModel {
 
     private static final long serialVersionUID = 902957026;

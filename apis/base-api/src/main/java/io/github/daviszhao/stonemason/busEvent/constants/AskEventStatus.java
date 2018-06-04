@@ -11,9 +11,13 @@ public enum AskEventStatus {
 
     CANCELLED("已取消");
 
-    private String desc;
+    private final String desc;
 
     AskEventStatus(String desc) {
         this.desc = desc;
+    }
+
+    public String getDesc() {
+        return desc;
     }
 }
