@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    continue-on-error: true
+    driver-class-name: com.mysql.jdbc.Driver
+    sql-script-encoding: UTF-8
+    url: jdbc:mysql://localhost/product?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=true&useSSL=false
+    username: root
+    password: smart7961
+    hikari:
+      max-lifetime: 1765000
+      maximum-pool-size: 20
+  jooq:
+    sql-dialect: mysql
